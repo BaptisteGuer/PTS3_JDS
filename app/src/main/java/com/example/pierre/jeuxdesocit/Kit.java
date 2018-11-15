@@ -1,6 +1,5 @@
 package com.example.pierre.jeuxdesocit;
 
-
 //VER HUGO
 public class Kit {
 
