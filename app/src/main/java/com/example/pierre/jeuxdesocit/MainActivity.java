@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -34,16 +35,17 @@ public class MainActivity extends AppCompatActivity {
         kits.add(kit1);
         kits.add(kit2);
         kits.add(kit3);
-        ArrayAdapter<Kit> adapter = new ArrayAdapter<Kit>(this, android.R.layout.simple_list_item_1, kits);
+        //ArrayAdapter<Kit> adapter = new ArrayAdapter<Kit>(this, android.R.layout.simple_list_item_1, kits);
+        MyCustomAdapter adapter = new MyCustomAdapter(kits, this);
         kitsView.setAdapter(adapter);
-        kitsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*kitsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 itemSelec = position;
                 ChangePage(position);
 
             }
-        });
+        });*/
         Log.e("largeur", kitsView.getMeasuredWidth() + "");
 
 
@@ -55,13 +57,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void ChangePage(int position) {
+    /*public void ChangePage(int position) {
         Intent intent = new Intent(getBaseContext(), ParamActivity.class);
         intent.putExtra("name", getItemSelec());
         startActivity(intent);
-        }
+        }*/
 
 
-    }
+         }
 
 
