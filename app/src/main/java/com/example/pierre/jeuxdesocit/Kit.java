@@ -13,4 +13,7 @@ public class Kit {
         items = new ArrayList<>();
     }
 
+    public String getNom() {
+        return nom;
+    }
 }

@@ -28,7 +28,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
     }
 
     @Override
-    public Object getItem(int pos) {
+    public Kit getItem(int pos) {
         return list.get(pos);
     }
 
@@ -43,7 +43,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
 
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.customListKits, null);
+            view = inflater.inflate(R.layout.custom_list_kits, null);
         }
 
         TextView listItemText = view.findViewById(R.id.textView2);
@@ -65,7 +65,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ModifierKitActivity.class);
-                intent.putExtra("name", getItem(position).toString());
+                intent.putExtra("name", getItem(position).getNom());
                 context.startActivity(intent);
             }
         });
