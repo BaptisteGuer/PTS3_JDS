@@ -14,7 +14,7 @@ public class Kit {
     }
 
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     public void setItems(List<Item> items) {
