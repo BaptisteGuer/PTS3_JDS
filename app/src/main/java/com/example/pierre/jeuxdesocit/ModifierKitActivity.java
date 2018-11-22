@@ -11,11 +11,9 @@ public class ModifierKitActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modifier_kit);
-        nom = findViewById(R.id.textView);
-        nom.setText(getIntent().getStringExtra("name"));
 
 
-        TextView titre = findViewById(R.id.test);
+        TextView titre = findViewById(R.id.titreKit);
         titre.setText(getIntent().getStringExtra("nomKit"));
 
     }

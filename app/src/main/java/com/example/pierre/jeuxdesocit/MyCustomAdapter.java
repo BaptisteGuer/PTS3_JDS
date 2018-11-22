@@ -2,6 +2,7 @@ package com.example.pierre.jeuxdesocit;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +53,9 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         Button param = view.findViewById(R.id.settings);
         Button suppr = view.findViewById(R.id.delete);
         Button jouer = view.findViewById(R.id.play);
+
+        Log.e("taille",parent.getHeight()+"");
+
 
         suppr.setOnClickListener(new View.OnClickListener(){
             @Override
