@@ -2,18 +2,18 @@ package com.example.pierre.jeuxdesocit;
 
 public class De extends Item{
 
-    private int valeur;
+    private String valeur;
+
 
     public De() {
-        super("Dé");
-        valeur = 6;
+        super("Dé", "6");
     }
 
-    public void setValeur(int valeur) {
+    public void setValeur(String valeur) {
         this.valeur = valeur;
     }
 
-    public int getValeur() {
+    public String getValeur() {
         return valeur;
     }
 }

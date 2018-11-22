@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private MyCustomAdapter adapter;
     private Button create_kit;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
         kits.add(kit12);
 
         kit1.addItem(new De());
+
+
 
     }
 
