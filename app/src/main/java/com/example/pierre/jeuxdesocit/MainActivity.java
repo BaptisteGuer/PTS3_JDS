@@ -14,11 +14,11 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Kit> kits;
+    public static AccesLocal accesLocal;
+    private List<String> listNomsKits;
     private ListView kitsView;
     private MyCustomAdapter adapter;
     private Button create_kit;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
         kitsView = findViewById(R.id.kitsList);
         create_kit = findViewById(R.id.create_new_kit);
-        kits = new ArrayList<>();
-        adapter = new MyCustomAdapter(kits, this);
-
+        listNomsKits = new ArrayList<>();
+        adapter = new MyCustomAdapter(listNomsKits, this);
+        accesLocal = new AccesLocal(this);
 
         kitsView.setAdapter(adapter);
         create_kit.setText("Créer Kit");
@@ -41,39 +41,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        Kit kit1 = new Kit("Kit1");
-        Kit kit2 = new Kit("Kit2");
-        Kit kit3 = new Kit("Kit3");
-        Kit kit4 = new Kit("Kit4");
-        Kit kit5 = new Kit("Kit5");
-        Kit kit6 = new Kit("Kit6");
-        Kit kit7 = new Kit("Kit7");
-        Kit kit8 = new Kit("Kit8");
-        Kit kit9 = new Kit("Kit9");
-        Kit kit10 = new Kit("Kit10");
-        Kit kit11= new Kit("Kit11");
-        Kit kit12 = new Kit("Kit12");
-        kits.add(kit1);
-        kits.add(kit2);
-        kits.add(kit3);
-        kits.add(kit4);
-        kits.add(kit5);
-        kits.add(kit6);
-        kits.add(kit7);
-        kits.add(kit8);
-        kits.add(kit9);
-        kits.add(kit10);
-        kits.add(kit11);
-        kits.add(kit12);
+        accesLocal.ajout(new Item("De", "6"), "Munchkin");
+        accesLocal.ajout(new Item("Piece", "0"), "Munchkin");
+        accesLocal.ajout(new Item("Timer", "1.5"), "Un Kit Nul");
 
-        kit1.addItem(new De());
-
-
-
+        listNomsKits.addAll(accesLocal.getListKit());
     }
-
-
-
 
 }
 

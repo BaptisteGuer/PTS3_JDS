@@ -11,26 +11,26 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
 
-    private ArrayList<Kit> list;
+    private List<String> listNomsKits;
     private Context context;
 
-    public MyCustomAdapter(ArrayList<Kit> list, Context context) {
-        this.list = list;
+    public MyCustomAdapter(List<String> listNomsKits, Context context) {
+        this.listNomsKits = listNomsKits;
         this.context = context;
     }
 
     @Override
     public int getCount() {
-        return list.size();
+        return listNomsKits.size();
     }
 
     @Override
-    public Kit getItem(int pos) {
-        return list.get(pos);
+    public String getItem(int pos) {
+        return listNomsKits.get(pos);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         }
 
         TextView listItemText = view.findViewById(R.id.textView2);
-        listItemText.setText(getItem(position).getNom());
+        listItemText.setText(getItem(position));
 
         Button param = view.findViewById(R.id.settings);
         Button suppr = view.findViewById(R.id.delete);
@@ -60,7 +60,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         suppr.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                list.remove(position);
+                listNomsKits.remove(position);
                 notifyDataSetChanged();
             }
         });
@@ -77,7 +77,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ModifierKitActivity.class);
-//                intent.putExtra("nomKit", getItem(position).getNom());
+//                intent.putExtra("nomKit", getItem(position));
                 context.startActivity(intent);
             }
         });
