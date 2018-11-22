@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         kits.add(kit10);
         kits.add(kit11);
         kits.add(kit12);
-
+        kit1.addItem(new De());
 
     }
 

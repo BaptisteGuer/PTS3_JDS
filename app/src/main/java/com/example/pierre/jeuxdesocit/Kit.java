@@ -16,4 +16,12 @@ public class Kit {
     public String getNom() {
         return nom;
     }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    public void addItem(Item item){
+        this.items.add(item);
+    }
 }

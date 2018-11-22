@@ -12,5 +12,8 @@ public class ModifierKitActivity extends AppCompatActivity {
         setContentView(R.layout.activity_modifier_kit);
 
 
+        TextView titre = findViewById(R.id.test);
+        titre.setText(getIntent().getStringExtra("nomKit"));
+
     }
 }
