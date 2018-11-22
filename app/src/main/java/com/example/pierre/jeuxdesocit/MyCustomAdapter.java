@@ -49,14 +49,14 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         TextView listItemText = view.findViewById(R.id.textView2);
         listItemText.setText(getItem(position).getNom());
 
-        Button params = view.findViewById(R.id.settings);
-        Button supp = view.findViewById(R.id.delete);
+        Button param = view.findViewById(R.id.settings);
+        Button suppr = view.findViewById(R.id.delete);
         Button jouer = view.findViewById(R.id.play);
 
-        supp.setOnClickListener(new View.OnClickListener(){
+        suppr.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                list.remove(position); //or some other task
+                list.remove(position);
                 notifyDataSetChanged();
             }
         });
@@ -64,17 +64,17 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         jouer.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ModifierKitActivity.class);
-                intent.putExtra("name", getItem(position).getNom());
+                Intent intent = new Intent(context, ParametrageActivity.class);
                 context.startActivity(intent);
             }
         });
 
-        params.setOnClickListener(new View.OnClickListener(){
+        param.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
-
+                Intent intent = new Intent(context, ModifierKitActivity.class);
+//                intent.putExtra("nomKit", getItem(position).getNom());
+                context.startActivity(intent);
             }
         });
 
