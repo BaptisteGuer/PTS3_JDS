@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         create_kit.setText("Créer Kit");
         create_kit.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Kit.class);
+                Intent intent = new Intent(MainActivity.this, ModifierKitActivity.class);
                 startActivity(intent);
             }
         });

@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:background="#606060"
     android:baselineAligned="false"
     android:gravity="top|center"
@@ -45,8 +45,8 @@
 
         <Button
             android:id="@+id/settings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/settings"
             android:visibility="visible" />
     </LinearLayout>
@@ -58,10 +58,10 @@
 
         <Button
             android:id="@+id/delete"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="@drawable/delete"
-            android:visibility="visible"
-            android:layout_height="wrap_content" />
+            android:visibility="visible" />
     </LinearLayout>
 
 </LinearLayout>

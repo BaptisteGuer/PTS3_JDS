@@ -54,7 +54,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         Button suppr = view.findViewById(R.id.delete);
         Button jouer = view.findViewById(R.id.play);
 
-        Log.e("taille",parent.getHeight()+"");
+        Log.e("taille",view.getHeight()+"");
 
 
         suppr.setOnClickListener(new View.OnClickListener(){
