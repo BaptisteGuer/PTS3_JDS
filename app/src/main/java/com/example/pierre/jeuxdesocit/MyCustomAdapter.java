@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
@@ -50,8 +51,8 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         TextView listItemText = view.findViewById(R.id.textView2);
         listItemText.setText(getItem(position));
 
-        Button param = view.findViewById(R.id.settings);
-        Button suppr = view.findViewById(R.id.delete);
+        ImageButton param = view.findViewById(R.id.settings);
+        ImageButton suppr = view.findViewById(R.id.delete);
         Button jouer = view.findViewById(R.id.play);
 
         Log.e("taille",view.getHeight()+"");

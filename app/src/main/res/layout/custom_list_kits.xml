@@ -2,66 +2,47 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#606060"
     android:baselineAligned="false"
-    android:gravity="top|center"
+    android:gravity="center"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_weight="1"
+        android:text="TextView"
+        android:textAllCaps="false"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:textStyle="italic" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="TextView"
-            android:textAllCaps="false"
-            android:textColor="@color/colorAccent"
-            android:textSize="18sp"
-            android:textStyle="italic" />
-    </LinearLayout>
-
-    <LinearLayout
+    <Button
+        android:id="@+id/play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="top|bottom"
-        android:orientation="vertical">
+        android:layout_weight="1"
+        android:text="Jouer" />
 
-        <Button
-            android:id="@+id/play"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Jouer" />
-    </LinearLayout>
-
-    <LinearLayout
+    <ImageButton
+        android:id="@+id/settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/settings" />
 
-        <Button
-            android:id="@+id/settings"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/settings"
-            android:visibility="visible" />
-    </LinearLayout>
-
-    <LinearLayout
+    <ImageButton
+        android:id="@+id/delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/delete"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/delete"
-            android:visibility="visible" />
-    </LinearLayout>
+        android:layout_weight="1"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/delete" />
 
 </LinearLayout>
