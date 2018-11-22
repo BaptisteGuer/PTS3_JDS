@@ -14,6 +14,6 @@ public class Kit {
     }
 
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 }

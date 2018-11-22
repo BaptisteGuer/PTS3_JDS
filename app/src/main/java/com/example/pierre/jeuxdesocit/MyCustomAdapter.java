@@ -47,7 +47,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         }
 
         TextView listItemText = view.findViewById(R.id.textView2);
-        listItemText.setText(getItem(position).toString());
+        listItemText.setText(getItem(position).getNom());
 
         Button params = view.findViewById(R.id.settings);
         Button supp = view.findViewById(R.id.delete);
