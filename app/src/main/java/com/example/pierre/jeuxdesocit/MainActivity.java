@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private MyCustomAdapter adapter;
     private Button create_kit;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         create_kit.setText("Créer Kit");
         create_kit.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Kit.class);
+                Intent intent = new Intent(MainActivity.this, ModifierKitActivity.class);
                 startActivity(intent);
             }
         });
@@ -64,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         kits.add(kit10);
         kits.add(kit11);
         kits.add(kit12);
+
+
 
 
     }
