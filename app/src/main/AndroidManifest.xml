@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ParamActivity">
+            android:name=".ModifierKitActivity">
         </activity>
     </application>
 
