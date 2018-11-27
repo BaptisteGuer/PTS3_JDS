@@ -61,6 +61,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         suppr.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                MainActivity.accesLocal.supprimerKit(listNomsKits.get(position));
                 listNomsKits.remove(position);
                 notifyDataSetChanged();
             }
