@@ -2,7 +2,6 @@ package com.example.pierre.jeuxdesocit;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,14 +50,11 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         TextView listItemText = view.findViewById(R.id.textView2);
         listItemText.setText(getItem(position));
 
-        ImageButton param = view.findViewById(R.id.settings);
-        ImageButton suppr = view.findViewById(R.id.delete);
-        Button jouer = view.findViewById(R.id.play);
+        ImageButton modifierKit = view.findViewById(R.id.settings);
+        ImageButton supprimerKit = view.findViewById(R.id.delete);
+        Button jouerKit = view.findViewById(R.id.play);
 
-        Log.e("taille",view.getHeight()+"");
-
-
-        suppr.setOnClickListener(new View.OnClickListener(){
+        supprimerKit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 MainActivity.accesLocal.supprimerKit(listNomsKits.get(position));
@@ -67,7 +63,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
             }
         });
 
-        jouer.setOnClickListener(new View.OnClickListener(){
+        jouerKit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ParametrageActivity.class);
@@ -75,11 +71,11 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
             }
         });
 
-        param.setOnClickListener(new View.OnClickListener(){
+        modifierKit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ModifierKitActivity.class);
-//                intent.putExtra("nomKit", getItem(position));
+                intent.putExtra("nomKit", getItem(position));
                 context.startActivity(intent);
             }
         });

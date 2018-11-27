@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#606060"
+    android:baselineAligned="false"
+    android:gravity="center"
+    tools:context=".ModifierKitActivity">
+
+    <TextView
+        android:id="@+id/nomItem"
+        android:layout_width="271dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="10dp"
+        android:layout_weight="1"
+        android:text="Dé"
+        android:textAllCaps="false"
+        android:gravity="center_vertical"
+        android:textColor="@color/colorAccent"
+        android:textSize="30sp" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="13dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:checked="false"
+
+        android:text="" />
+
+</LinearLayout>
