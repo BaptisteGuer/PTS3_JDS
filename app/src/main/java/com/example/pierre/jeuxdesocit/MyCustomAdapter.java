@@ -1,7 +1,11 @@
 package com.example.pierre.jeuxdesocit;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +15,20 @@ import android.widget.ImageButton;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
 
     private List<String> listNomsKits;
     private Context context;
+    private Dialog popup;
 
     public MyCustomAdapter(List<String> listNomsKits, Context context) {
         this.listNomsKits = listNomsKits;
         this.context = context;
+        popup = new Dialog(context);
     }
 
     @Override
@@ -39,7 +47,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, final View convertView, ViewGroup parent) {
         View view = convertView;
 
         if (view == null) {
@@ -57,8 +65,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         supprimerKit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                MainActivity.accesLocal.supprimerKit(listNomsKits.get(position));
-                listNomsKits.remove(position);
+                ShowPopup(v,position);
                 notifyDataSetChanged();
             }
         });
@@ -68,6 +75,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
             public void onClick(View v) {
                 Intent intent = new Intent(context, ParametrageActivity.class);
                 context.startActivity(intent);
+
             }
         });
 
@@ -81,5 +89,33 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         });
 
         return view;
+    }
+
+    public void ShowPopup (View v,final int position){
+        TextView txtclose;
+        Button btnValider;
+        TextView texte;
+        popup.setContentView(R.layout.custom_popup);
+        texte = (TextView) popup.findViewById(R.id.texte);
+        txtclose = (TextView) popup.findViewById(R.id.croix);
+        btnValider = (Button) popup.findViewById(R.id.valider);
+        texte.setText("Voulez vous vraiment supprimer le kit "+getItem(position)+" ?");
+        txtclose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popup.dismiss();
+            }
+        });
+        btnValider.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity.accesLocal.supprimerKit(listNomsKits.get(position));
+                listNomsKits.remove(position);
+                popup.dismiss();
+                notifyDataSetChanged();
+            }
+        });
+        popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popup.show();
     }
 }
