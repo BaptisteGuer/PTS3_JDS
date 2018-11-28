@@ -43,13 +43,7 @@ public class ModifierKitActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // on ajoute les items à la bdd
                 for (String item : itemsOK) {
-                    // ajouter que s'il n'existe pas déjà
-                    if(MainActivity.accesLocal.getItem(item, nomKit) == null){ ///////////////////////////////////////////////////////////////////////////////
-                        Log.e("azerty","il n'existe pas déjà");
-                        MainActivity.accesLocal.ajoutItem(new Item(item, ""),nomKit);
-                    } else {
-                        Log.e("azerty","Le kit " + MainActivity.accesLocal.getItem(item, nomKit).getNom() + "existe pour le kit " + nomKit);
-                    }
+                    MainActivity.accesLocal.ajoutItem(new Item(item, ""),nomKit);
                 }
 
                 // afficher les items du kit validé
