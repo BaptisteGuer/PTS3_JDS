@@ -19,7 +19,7 @@ public class AccesLocal {
         accesBD = new MySQLiteOpenHelper(context, nomBase, null, versionBase);
     }
 
-    public List<String> getListKit() {
+    public List<String> getListKits() {
         bd = accesBD.getReadableDatabase();
         List<String> stringList = new ArrayList<>();
         String req = "SELECT DISTINCT nomKit FROM Item";
@@ -33,6 +33,47 @@ public class AccesLocal {
 
         cursor.close();
         return stringList;
+    }
+
+    public List<String> getListItems() {
+        bd = accesBD.getReadableDatabase();
+        List<String> stringList = new ArrayList<>();
+        String req = "SELECT DISTINCT nom FROM Item";
+        Cursor cursor = bd.rawQuery(req, null);
+
+        for (int i = 0; i < cursor.getCount(); i++) {
+            cursor.moveToPosition(i);
+            String s = cursor.getString(0);
+            stringList.add(s);
+        }
+
+        cursor.close();
+        return stringList;
+    }
+
+    public List<String> getListItems(String nomKit) {
+        bd = accesBD.getReadableDatabase();
+        List<String> stringList = new ArrayList<>();
+        String req = "SELECT nom FROM Item WHERE nomKit=\"" + nomKit + "\"";
+        Cursor cursor = bd.rawQuery(req, null);
+
+        for (int i = 0; i < cursor.getCount(); i++) {
+            cursor.moveToPosition(i);
+            String s = cursor.getString(0);
+            stringList.add(s);
+        }
+
+        cursor.close();
+        return stringList;
+    }
+
+    public Item getItem(String nomItem, String nomKit){
+        bd = accesBD.getReadableDatabase();
+        List<String> stringList = new ArrayList<>();
+        String req = "SELECT nom, valeur FROM Item WHERE nom=\"" + nomItem + "\" AND nomKit=\"" + nomKit + "\"";
+        Cursor cursor = bd.rawQuery(req, null);
+        Item item = new Item(cursor.getString(0),cursor.getString(1));
+        return item;
     }
 
     public void ajoutItem(Item item, String nomKit) {
@@ -55,19 +96,19 @@ public class AccesLocal {
         bd.execSQL(req);
     }
 
-    public void supprimerItem(Item item, String nomKit) {
-        bd = accesBD.getWritableDatabase();
-        String req = "DELETE FROM Item WHERE nom=\"" + item + "\" AND nomKit=\"" + nomKit + "\";";
-        bd.execSQL(req);
-    }
+//    public void supprimerItem(Item item, String nomKit) {
+//        bd = accesBD.getWritableDatabase();
+//        String req = "DELETE FROM Item WHERE nom=\"" + item + "\" AND nomKit=\"" + nomKit + "\";";
+//        bd.execSQL(req);
+//    }
 
-    public void supprimerListItem(List<Item> lesItems, String nomKit) {
-        bd = accesBD.getWritableDatabase();
-        for (Item item : lesItems) {
-            String req = "DELETE FROM Item WHERE nom=\"" + item + "\" AND nomKit=\"" + nomKit + "\";";
-            bd.execSQL(req);
-        }
-    }
+//    public void supprimerListItem(List<Item> lesItems, String nomKit) {
+//        bd = accesBD.getWritableDatabase();
+//        for (Item item : lesItems) {
+//            String req = "DELETE FROM Item WHERE nom=\"" + item + "\" AND nomKit=\"" + nomKit + "\";";
+//            bd.execSQL(req);
+//        }
+//    }
 
     public void supprimerKit(String nomKit) {
         bd = accesBD.getWritableDatabase();

@@ -3,6 +3,7 @@ package com.example.pierre.jeuxdesocit;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         listNomsKits = new ArrayList<>();
         accesLocal = new AccesLocal(this);
 
-        listNomsKits.addAll(accesLocal.getListKit());
+        listNomsKits.addAll(accesLocal.getListKits());
         adapter = new MyCustomAdapter(listNomsKits, this);
         kitsView.setAdapter(adapter);
 
@@ -36,21 +37,22 @@ public class MainActivity extends AppCompatActivity {
         create_kit.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 List<Item> lesItems = new ArrayList<>();
-                Item item1 = new Item("De", "6");
+                Item item1 = new Item("ITEM TEST 1 KIT 1", "6");
+                Item item2 = new Item("ITEM TEST 2 KIT 1", "0");
                 lesItems.add(item1);
-                Item item2 = new Item("Piece", "0");
                 lesItems.add(item2);
 
                 List<Item> lesItems2 = new ArrayList<>();
-                Item item3 = new Item("Timer", "1.5");
+                Item item3 = new Item("ITEM TEST 3 KIT 2", "1.5");
+                Item item4 = new Item("ITEM TEST 4 KIT 2", "AZER");
                 lesItems2.add(item3);
+                lesItems2.add(item4);
 
                 accesLocal.ajoutListItem(lesItems, "Munchkin");
                 accesLocal.ajoutListItem(lesItems2, "Un Kit Nul");
-                Intent intent = new Intent(MainActivity.this, ModifierKitActivity.class);
-                startActivity(intent);
             }
         });
+
     }
 
 }
