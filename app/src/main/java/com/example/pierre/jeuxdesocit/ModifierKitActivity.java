@@ -20,7 +20,6 @@ public class ModifierKitActivity extends AppCompatActivity {
     private ListView itemsView;
     private MyCustomAdapterItems adapter;
     private Button validerKit;
-    public static List<String> itemsOK;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,17 +33,12 @@ public class ModifierKitActivity extends AppCompatActivity {
         itemsView = findViewById(R.id.listItems);
         validerKit = findViewById(R.id.validerKit);
         lesItems = MainActivity.accesLocal.getListItems();
-        itemsOK = new ArrayList<>();
 
-        adapter = new MyCustomAdapterItems(lesItems, this);
+        adapter = new MyCustomAdapterItems(lesItems, nomKit, this);
         itemsView.setAdapter(adapter);
 
         validerKit.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                // on ajoute les items à la bdd
-                for (String item : itemsOK) {
-                    MainActivity.accesLocal.ajoutItem(new Item(item, ""),nomKit);
-                }
 
                 // afficher les items du kit validé
                 List<String> test = MainActivity.accesLocal.getListItems(nomKit);

@@ -18,10 +18,12 @@ public class MyCustomAdapterItems extends BaseAdapter implements ListAdapter {
 
     private List<String> listNomsItems;
     private Context context;
+    private String nomKit;
 
-    public MyCustomAdapterItems(List<String> listNomsItems, Context context) {
+    public MyCustomAdapterItems(List<String> listNomsItems, String nomKit, Context context) {
         this.listNomsItems = listNomsItems;
         this.context = context;
+        this.nomKit = nomKit;
     }
 
     @Override
@@ -48,7 +50,7 @@ public class MyCustomAdapterItems extends BaseAdapter implements ListAdapter {
             view = inflater.inflate(R.layout.custom_list_items, null);
         }
 
-        TextView nomItem = view.findViewById(R.id.nomItem);
+        final TextView nomItem = view.findViewById(R.id.nomItem);
         nomItem.setText(getItem(position));
 
         final CheckBox cocherItem = view.findViewById(R.id.checkBox);
@@ -58,14 +60,10 @@ public class MyCustomAdapterItems extends BaseAdapter implements ListAdapter {
             public void onClick(View v) {
                 if(cocherItem.isChecked()){
                     // ajouter item a la liste des items à mettre dans la bdd
-                    ModifierKitActivity.itemsOK.add(getItem(position));
+                    MainActivity.accesLocal.ajoutItem(new Item(getItem(position),""), nomKit);
                 } else {
                     // supprimer item a la liste des items à mettre dans la bdd
-                    for (int i = 0; i < ModifierKitActivity.itemsOK.size(); i++) {
-                        if(ModifierKitActivity.itemsOK.get(i) == getItem(position)){
-                            ModifierKitActivity.itemsOK.remove(i);
-                        }
-                    }
+                    MainActivity.accesLocal.supprimerItem(MainActivity.accesLocal.getItem(getItem(position),nomKit),nomKit);
                 }
             }
         });

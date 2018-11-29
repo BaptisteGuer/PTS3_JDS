@@ -67,22 +67,16 @@ public class AccesLocal {
         return stringList;
     }
 
-//    public Item getItem(String nomItem, String nomKit){
-//        bd = accesBD.getReadableDatabase();
-//        List<String> stringList = new ArrayList<>();
-//        String req = "SELECT nom, valeur FROM Item WHERE nom=\"" + nomItem + "\" AND nomKit=\"" + nomKit + "\"";
-//        Cursor cursor = bd.rawQuery(req, null);
-//        Item item = new Item(cursor.getString(0),cursor.getString(1));
-//        return item;
-//    }
+    public Item getItem(String nomItem, String nomKit){
+        bd = accesBD.getReadableDatabase();
+        List<String> stringList = new ArrayList<>();
+        String req = "SELECT nom, valeur FROM Item WHERE nom=\"" + nomItem + "\" AND nomKit=\"" + nomKit + "\"";
+        Cursor cursor = bd.rawQuery(req, null);
+        Item item = new Item(cursor.getString(0),cursor.getString(1));
+        return item;
+    }
 
     public void ajoutItem(Item item, String nomKit) {
-        // ajouter QUE s'il n'existe pas déjà
-
-
-
-
-
         bd = accesBD.getWritableDatabase();
         String req = "INSERT INTO Item (nom, valeur, nomKit) VALUES ";
         req += "(\"" + item.getNom() + "\",\"" + item.getValeur() + "\",\"" + nomKit + "\")";
@@ -102,11 +96,11 @@ public class AccesLocal {
         bd.execSQL(req);
     }
 
-//    public void supprimerItem(Item item, String nomKit) {
-//        bd = accesBD.getWritableDatabase();
-//        String req = "DELETE FROM Item WHERE nom=\"" + item + "\" AND nomKit=\"" + nomKit + "\";";
-//        bd.execSQL(req);
-//    }
+    public void supprimerItem(Item item, String nomKit) {
+        bd = accesBD.getWritableDatabase();
+        String req = "DELETE FROM Item WHERE nom=\"" + item + "\" AND nomKit=\"" + nomKit + "\";";
+        bd.execSQL(req);
+    }
 
 //    public void supprimerListItem(List<Item> lesItems, String nomKit) {
 //        bd = accesBD.getWritableDatabase();
