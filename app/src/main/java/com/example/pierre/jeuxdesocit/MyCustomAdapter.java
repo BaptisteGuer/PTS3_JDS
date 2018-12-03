@@ -127,7 +127,6 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter, Filtera
                  ********/
                 if (constraint == null || constraint.length() == 0)
                 {
-
                     // set the Original result to return
                     results.count = listNomsKitsFiltree.size();
                     results.values = listNomsKitsFiltree;
@@ -154,7 +153,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter, Filtera
     }
 
 
-            public void ShowPopup (View v,final int position){
+    public void ShowPopup (View v,final int position){
         TextView txtclose;
         Button btnValider;
         TextView texte;

@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -21,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private ListView kitsView;
     private MyCustomAdapter adapter;
     private Button create_kit;
-    private MenuItem item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
         kitsView = findViewById(R.id.kitsList);
         create_kit = findViewById(R.id.create_new_kit);
-        item = findViewById(R.id.menuSearch);
         listNomsKits = new ArrayList<>();
         accesLocal = new AccesLocal(this);
 
@@ -62,20 +61,27 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater inflater = getMenuInflater();
-
         inflater.inflate(R.menu.menu_search,menu);
-        SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.menuSearch));
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.menuSearch));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                adapter.notifyDataSetChanged();
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
                     adapter.getFilter().filter(newText);
-
+                    adapter.notifyDataSetChanged();
                 return true;
+            }
+        }
+        );
+        searchView.setOnSearchClickListener(new SearchView.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                searchView.clearFocus();
             }
         });
     return super.onCreateOptionsMenu(menu);
