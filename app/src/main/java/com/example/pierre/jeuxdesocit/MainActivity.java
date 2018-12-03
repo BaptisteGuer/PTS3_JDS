@@ -38,21 +38,20 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MyCustomAdapter(listNomsKits, this);
         kitsView.setAdapter(adapter);
 
+        List<Item> lesItems = new ArrayList<>();
+        lesItems.add(new Item("ITEM TEST 1", ""));
+        lesItems.add(new Item("ITEM TEST 2", ""));
+        lesItems.add(new Item("ITEM TEST 3", ""));
+        lesItems.add(new Item("ITEM TEST 4", ""));
+        lesItems.add(new Item("ITEM TEST 5", ""));
+        accesLocal.ajoutListItem(lesItems, "Les items");
+
         create_kit.setText("Créer Kit");
         create_kit.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                List<Item> lesItems = new ArrayList<>();
-
-                lesItems.add(new Item("ITEM TEST 1", ""));
-                lesItems.add(new Item("ITEM TEST 2", ""));
-                lesItems.add(new Item("ITEM TEST 3", ""));
-                lesItems.add(new Item("ITEM TEST 4", ""));
-
                 List<Item> lesItems2 = new ArrayList<>();
-                lesItems2.add(new Item("ITEM TEST 1", ""));
-
-                accesLocal.ajoutListItem(lesItems2, "LoupGaroup");
-
+                lesItems2.add(new Item("ITEM TEST 4", ""));
+                accesLocal.ajoutListItem(lesItems2, "LoupGarou");
             }
         });
 

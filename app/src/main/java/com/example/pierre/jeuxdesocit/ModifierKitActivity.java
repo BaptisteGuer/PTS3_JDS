@@ -29,11 +29,9 @@ public class ModifierKitActivity extends AppCompatActivity {
         titre = findViewById(R.id.nomKit);
         nomKit = getIntent().getStringExtra("nomKit");
         titre.setText(nomKit);
-
         itemsView = findViewById(R.id.listItems);
         validerKit = findViewById(R.id.validerKit);
         lesItems = MainActivity.accesLocal.getListItems();
-
         adapter = new MyCustomAdapterItems(lesItems, nomKit, this);
         itemsView.setAdapter(adapter);
 
@@ -41,7 +39,7 @@ public class ModifierKitActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // afficher les items du kit validé
-                List<String> test = MainActivity.accesLocal.getListItems();
+                List<String> test = MainActivity.accesLocal.getListItems(nomKit);
                 for (String item:test) {
                     Log.e("azerty","" + item + " dans " + nomKit);
                 }
