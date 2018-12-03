@@ -3,6 +3,7 @@ package com.example.pierre.jeuxdesocit;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyCustomAdapterItems extends BaseAdapter implements ListAdapter {
@@ -55,15 +57,30 @@ public class MyCustomAdapterItems extends BaseAdapter implements ListAdapter {
 
         final CheckBox cocherItem = view.findViewById(R.id.checkBox);
 
-        cocherItem.setOnClickListener(new View.OnClickListener(){
+        List<String> items = new ArrayList<String>();
+
+        items = MainActivity.accesLocal.getListItems(nomKit);
+
+
+        for (String unItem : items) {
+            Log.i("AAAAAA", getItem(position) + " ET " + unItem);
+            if (getItem(position).equals(unItem)) {
+                cocherItem.setChecked(true);
+            }
+
+        }
+
+
+        cocherItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(cocherItem.isChecked()){
+                if (cocherItem.isChecked()) {
                     // ajouter item a la liste des items à mettre dans la bdd
-                    MainActivity.accesLocal.ajoutItem(new Item(getItem(position),""), nomKit);
+                    MainActivity.accesLocal.ajoutItem(new Item(getItem(position), ""), nomKit);
                 } else {
                     // supprimer item a la liste des items à mettre dans la bdd
-                    MainActivity.accesLocal.supprimerItem(MainActivity.accesLocal.getItem(getItem(position),nomKit),nomKit);
+                    Log.i("ZZZZZZ", "" + MainActivity.accesLocal.getItem(getItem(position), nomKit));
+                    //MainActivity.accesLocal.supprimerItem(MainActivity.accesLocal.getItem(getItem(position), nomKit), nomKit);
                 }
             }
         });
