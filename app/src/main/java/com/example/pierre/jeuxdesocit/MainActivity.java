@@ -1,5 +1,6 @@
 package com.example.pierre.jeuxdesocit;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -52,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
                 List<Item> lesItems2 = new ArrayList<>();
                 lesItems2.add(new Item("ITEM TEST 4", ""));
                 accesLocal.ajoutListItem(lesItems2, "LoupGarou");
+                Intent intent = new Intent(MainActivity.this, CreerKitActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -71,7 +74,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                     adapter.getFilter().filter(newText);
-
                 return true;
             }
         });

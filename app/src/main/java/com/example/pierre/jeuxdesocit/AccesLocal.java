@@ -75,6 +75,16 @@ public class AccesLocal {
         return item;
     }
 
+    public boolean getKit(String nomKit){
+        bd = accesBD.getReadableDatabase();
+        List<String> stringList = new ArrayList<>();
+        String req = "SELECT nomKit FROM Item WHERE nomKit=\"" + nomKit + "\"";
+        Cursor cursor = bd.rawQuery(req, null);
+        cursor.moveToFirst();
+        if(cursor.isLast()) return true;
+        return false;
+    }
+
     public void ajoutItem(Item item, String nomKit) {
         bd = accesBD.getWritableDatabase();
         String req = "INSERT INTO Item (nom, valeur, nomKit) VALUES ";

@@ -16,8 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ModifierKitActivity"></activity>
-        <activity android:name=".ParametrageActivity"></activity>
+        <activity android:name=".ModifierKitActivity" />
+        <activity android:name=".ParametrageActivity" />
+        <activity android:name=".CreerKitActivity"></activity>
     </application>
 
 </manifest>
