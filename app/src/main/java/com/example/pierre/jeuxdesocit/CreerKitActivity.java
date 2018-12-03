@@ -39,18 +39,9 @@ public class CreerKitActivity extends AppCompatActivity {
         validerKit.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 nomKit = titre.getText().toString();
-
-                if(MainActivity.accesLocal.kitExiste(nomKit)){
-                    // dire que ce nom est déja prit
-                }
-
                 for (String unItem : listItemsAAjouter) {
                     MainActivity.accesLocal.ajoutItem(new Item(unItem,""), nomKit);
-                }
-
-                List<String> test = MainActivity.accesLocal.getListItems(nomKit);
-                for (String item : test) {
-                    Log.e("azerty","" + item + " dans " + nomKit);
+                    Log.e("azerty","" + unItem + " dans " +nomKit);
                 }
                 Intent intent = new Intent(CreerKitActivity.this, MainActivity.class);
                 startActivity(intent);

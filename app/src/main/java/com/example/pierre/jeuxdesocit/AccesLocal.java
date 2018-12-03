@@ -72,16 +72,18 @@ public class AccesLocal {
         List<String> stringList = new ArrayList<>();
         String req = "SELECT nom, valeur FROM Item WHERE nom=\"" + nomItem + "\" AND nomKit=\"" + nomKit + "\"";
         Cursor cursor = bd.rawQuery(req, null);
+        cursor.moveToFirst();
         Item item = new Item(cursor.getString(0),cursor.getString(1));
         return item;
     }
 
-    public boolean kitExiste(String nomKit){
+    public boolean getKit(String nomKit){
         bd = accesBD.getReadableDatabase();
         List<String> stringList = new ArrayList<>();
         String req = "SELECT nomKit FROM Item WHERE nomKit=\"" + nomKit + "\"";
         Cursor cursor = bd.rawQuery(req, null);
-        if(cursor.getString(0) == nomKit) return true;
+        cursor.moveToFirst();
+        if(cursor.isLast()) return true;
         return false;
     }
 

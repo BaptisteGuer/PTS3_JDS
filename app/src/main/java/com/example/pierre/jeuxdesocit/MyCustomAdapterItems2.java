@@ -1,6 +1,7 @@
 package com.example.pierre.jeuxdesocit;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,9 +55,11 @@ public class MyCustomAdapterItems2 extends BaseAdapter implements ListAdapter {
             @Override
             public void onClick(View v) {
                 if(cocherItem.isChecked()){
-                    // ajouter item a la liste des items à mettre dans la bdd
+                    CreerKitActivity.listItemsAAjouter.add(getItem(position));
                 } else {
-                    // supprimer item a la liste des items à mettre dans la bdd
+                    for (int i = 0; i < CreerKitActivity.listItemsAAjouter.size(); i++){
+                        if (CreerKitActivity.listItemsAAjouter.get(i) == getItem(position)) CreerKitActivity.listItemsAAjouter.remove(i);
+                    }
                 }
             }
         });
