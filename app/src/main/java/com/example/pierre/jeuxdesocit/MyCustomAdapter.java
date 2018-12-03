@@ -154,7 +154,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter, Filtera
     }
 
 
-            public void ShowPopup (View v,final int position){
+    public void ShowPopup (View v,final int position){
         TextView txtclose;
         Button btnValider;
         TextView texte;

@@ -21,7 +21,6 @@ public class MainActivity extends AppCompatActivity {
     private ListView kitsView;
     private MyCustomAdapter adapter;
     private Button create_kit;
-    private MenuItem item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
         kitsView = findViewById(R.id.kitsList);
         create_kit = findViewById(R.id.create_new_kit);
-        item = findViewById(R.id.menuSearch);
         listNomsKits = new ArrayList<>();
         accesLocal = new AccesLocal(this);
-
         listNomsKits.addAll(accesLocal.getListKits());
         adapter = new MyCustomAdapter(listNomsKits, this);
         kitsView.setAdapter(adapter);
@@ -42,18 +39,12 @@ public class MainActivity extends AppCompatActivity {
         create_kit.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 List<Item> lesItems = new ArrayList<>();
-                Item item1 = new Item("ITEM TEST 1 KIT 1", "6");
-                Item item2 = new Item("ITEM TEST 2 KIT 1", "0");
-                lesItems.add(item1);
-                lesItems.add(item2);
-
-                List<Item> lesItems2 = new ArrayList<>();
-                Item item3 = new Item("ITEM TEST 3 KIT 2", "1.5");
-                Item item4 = new Item("ITEM TEST 4 KIT 2", "AZER");
-                lesItems2.add(item3);
-                lesItems2.add(item4);
-
+                lesItems.add(new Item("ITEM TEST 1", "6"));
+                lesItems.add(new Item("ITEM TEST 2", "0"));
                 accesLocal.ajoutListItem(lesItems, "Munchkin");
+                List<Item> lesItems2 = new ArrayList<>();
+                lesItems2.add(new Item("ITEM TEST 3", "1.5"));
+                lesItems2.add(new Item("ITEM TEST 4", "AZER"));
                 accesLocal.ajoutListItem(lesItems2, "Un Kit Nul");
             }
         });
