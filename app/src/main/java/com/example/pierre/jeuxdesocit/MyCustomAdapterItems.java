@@ -57,13 +57,10 @@ public class MyCustomAdapterItems extends BaseAdapter implements ListAdapter {
 
         final CheckBox cocherItem = view.findViewById(R.id.checkBox);
 
-        List<String> items = new ArrayList<String>();
-
-        items = MainActivity.accesLocal.getListItems(nomKit);
+        List<String> items = MainActivity.accesLocal.getListItems(nomKit);
 
 
         for (String unItem : items) {
-            Log.i("AAAAAA", getItem(position) + " ET " + unItem);
             if (getItem(position).equals(unItem)) {
                 cocherItem.setChecked(true);
             }
@@ -79,8 +76,7 @@ public class MyCustomAdapterItems extends BaseAdapter implements ListAdapter {
                     MainActivity.accesLocal.ajoutItem(new Item(getItem(position), ""), nomKit);
                 } else {
                     // supprimer item a la liste des items à mettre dans la bdd
-                    Log.i("ZZZZZZ", "" + MainActivity.accesLocal.getItem(getItem(position), nomKit));
-                    //MainActivity.accesLocal.supprimerItem(MainActivity.accesLocal.getItem(getItem(position), nomKit), nomKit);
+                    MainActivity.accesLocal.supprimerItem(MainActivity.accesLocal.getItem(getItem(position), nomKit), nomKit);
                 }
             }
         });

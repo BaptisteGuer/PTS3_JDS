@@ -41,7 +41,7 @@ public class ModifierKitActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 // afficher les items du kit validé
-                List<String> test = MainActivity.accesLocal.getListItems(nomKit);
+                List<String> test = MainActivity.accesLocal.getListItems();
                 for (String item:test) {
                     Log.e("azerty","" + item + " dans " + nomKit);
                 }

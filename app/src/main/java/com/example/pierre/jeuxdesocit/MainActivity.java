@@ -42,19 +42,17 @@ public class MainActivity extends AppCompatActivity {
         create_kit.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
                 List<Item> lesItems = new ArrayList<>();
-                Item item1 = new Item("ITEM TEST 1 KIT 1", "6");
-                Item item2 = new Item("ITEM TEST 2 KIT 1", "0");
-                lesItems.add(item1);
-                lesItems.add(item2);
+
+                lesItems.add(new Item("ITEM TEST 1", ""));
+                lesItems.add(new Item("ITEM TEST 2", ""));
+                lesItems.add(new Item("ITEM TEST 3", ""));
+                lesItems.add(new Item("ITEM TEST 4", ""));
 
                 List<Item> lesItems2 = new ArrayList<>();
-                Item item3 = new Item("ITEM TEST 3 KIT 2", "1.5");
-                Item item4 = new Item("ITEM TEST 4 KIT 2", "AZER");
-                lesItems2.add(item3);
-                lesItems2.add(item4);
+                lesItems2.add(new Item("ITEM TEST 1", ""));
 
-                accesLocal.ajoutListItem(lesItems, "Munchkin");
-                accesLocal.ajoutListItem(lesItems2, "Un Kit Nul");
+                accesLocal.ajoutListItem(lesItems2, "LoupGaroup");
+
             }
         });
 

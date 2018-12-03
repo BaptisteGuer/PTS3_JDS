@@ -22,7 +22,7 @@ public class AccesLocal {
     public List<String> getListKits() {
         bd = accesBD.getReadableDatabase();
         List<String> stringList = new ArrayList<>();
-        String req = "SELECT DISTINCT nomKit FROM Item";
+        String req = "SELECT DISTINCT nomKit FROM Item WHERE nomKit <> ''";
         Cursor cursor = bd.rawQuery(req, null);
 
         for (int i = 0; i < cursor.getCount(); i++) {
@@ -30,7 +30,6 @@ public class AccesLocal {
             String s = cursor.getString(0);
             stringList.add(s);
         }
-
         cursor.close();
         return stringList;
     }
@@ -54,7 +53,7 @@ public class AccesLocal {
     public List<String> getListItems(String nomKit) {
         bd = accesBD.getReadableDatabase();
         List<String> stringList = new ArrayList<>();
-        String req = "SELECT DISTINCT nom FROM Item WHERE nomKit=\"" + nomKit + "\"";
+        String req = "SELECT nom FROM Item WHERE nomKit='" + nomKit + "'";
         Cursor cursor = bd.rawQuery(req, null);
 
         for (int i = 0; i < cursor.getCount(); i++) {
@@ -71,6 +70,7 @@ public class AccesLocal {
         bd = accesBD.getReadableDatabase();
         String req = "SELECT DISTINCT nom, valeur FROM Item WHERE nom='" + nomItem + "' AND nomKit='" + nomKit + "'";
         Cursor cursor = bd.rawQuery(req, null);
+        cursor.moveToFirst();
         Item item = new Item(cursor.getString(0),cursor.getString(1));
         return item;
     }
