@@ -1,31 +1,25 @@
 package com.example.pierre.jeuxdesocit;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class MyCustomAdapterItems extends BaseAdapter implements ListAdapter {
+public class MyCustomAdapterItems2 extends BaseAdapter implements ListAdapter {
 
     private List<String> listNomsItems;
     private Context context;
-    private String nomKit;
 
-    public MyCustomAdapterItems(List<String> listNomsItems, String nomKit, Context context) {
+    public MyCustomAdapterItems2(List<String> listNomsItems, Context context) {
         this.listNomsItems = listNomsItems;
         this.context = context;
-        this.nomKit = nomKit;
     }
 
     @Override
@@ -57,26 +51,15 @@ public class MyCustomAdapterItems extends BaseAdapter implements ListAdapter {
 
         final CheckBox cocherItem = view.findViewById(R.id.checkBox);
 
-        List<String> items = MainActivity.accesLocal.getListItems(nomKit);
-
-
-        for (String unItem : items) {
-            if (getItem(position).equals(unItem)) {
-                cocherItem.setChecked(true);
-            }
-
-        }
-
-
-        cocherItem.setOnClickListener(new View.OnClickListener() {
+        cocherItem.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if (cocherItem.isChecked()) {
-                    // ajouter item a la liste des items à mettre dans la bdd
-                    MainActivity.accesLocal.ajoutItem(new Item(getItem(position), ""), nomKit);
+                if(cocherItem.isChecked()){
+                    CreerKitActivity.listItemsAAjouter.add(getItem(position));
                 } else {
-                    // supprimer item a la liste des items à mettre dans la bdd
-                    MainActivity.accesLocal.supprimerItem(MainActivity.accesLocal.getItem(getItem(position), nomKit), nomKit);
+                    for (int i = 0; i < CreerKitActivity.listItemsAAjouter.size(); i++){
+                        if (CreerKitActivity.listItemsAAjouter.get(i) == getItem(position)) CreerKitActivity.listItemsAAjouter.remove(i);
+                    }
                 }
             }
         });

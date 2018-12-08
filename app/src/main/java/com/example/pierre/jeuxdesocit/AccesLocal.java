@@ -22,7 +22,7 @@ public class AccesLocal {
     public List<String> getListKits() {
         bd = accesBD.getReadableDatabase();
         List<String> stringList = new ArrayList<>();
-        String req = "SELECT DISTINCT nomKit FROM Item";
+        String req = "SELECT DISTINCT nomKit FROM Item WHERE nomKit <> ''";
         Cursor cursor = bd.rawQuery(req, null);
 
         for (int i = 0; i < cursor.getCount(); i++) {
@@ -30,7 +30,6 @@ public class AccesLocal {
             String s = cursor.getString(0);
             stringList.add(s);
         }
-
         cursor.close();
         return stringList;
     }
@@ -54,7 +53,7 @@ public class AccesLocal {
     public List<String> getListItems(String nomKit) {
         bd = accesBD.getReadableDatabase();
         List<String> stringList = new ArrayList<>();
-        String req = "SELECT nom FROM Item WHERE nomKit=\"" + nomKit + "\"";
+        String req = "SELECT nom FROM Item WHERE nomKit='" + nomKit + "'";
         Cursor cursor = bd.rawQuery(req, null);
 
         for (int i = 0; i < cursor.getCount(); i++) {
@@ -69,11 +68,21 @@ public class AccesLocal {
 
     public Item getItem(String nomItem, String nomKit){
         bd = accesBD.getReadableDatabase();
-        List<String> stringList = new ArrayList<>();
-        String req = "SELECT nom, valeur FROM Item WHERE nom=\"" + nomItem + "\" AND nomKit=\"" + nomKit + "\"";
+        String req = "SELECT DISTINCT nom, valeur FROM Item WHERE nom='" + nomItem + "' AND nomKit='" + nomKit + "'";
         Cursor cursor = bd.rawQuery(req, null);
+        cursor.moveToFirst();
         Item item = new Item(cursor.getString(0),cursor.getString(1));
         return item;
+    }
+
+    public boolean getKit(String nomKit){
+        bd = accesBD.getReadableDatabase();
+        List<String> stringList = new ArrayList<>();
+        String req = "SELECT nomKit FROM Item WHERE nomKit=\"" + nomKit + "\"";
+        Cursor cursor = bd.rawQuery(req, null);
+        cursor.moveToFirst();
+        if(cursor.isLast()) return true;
+        return false;
     }
 
     public void ajoutItem(Item item, String nomKit) {
@@ -98,7 +107,7 @@ public class AccesLocal {
 
     public void supprimerItem(Item item, String nomKit) {
         bd = accesBD.getWritableDatabase();
-        String req = "DELETE FROM Item WHERE nom=\"" + item + "\" AND nomKit=\"" + nomKit + "\";";
+        String req = "DELETE FROM Item WHERE nom=\"" + item.getNom() + "\" AND nomKit=\"" + nomKit + "\";";
         bd.execSQL(req);
     }
 
