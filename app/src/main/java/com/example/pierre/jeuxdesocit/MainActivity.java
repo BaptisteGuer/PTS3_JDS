@@ -5,9 +5,7 @@ import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -18,7 +16,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     public static AccesLocal accesLocal;
-    private List<String> listNomsKits;
+    public static List<String> listNomsKits;
+    public List<String> templist;
     private ListView kitsView;
     private MyCustomAdapter adapter;
     private Button create_kit;
@@ -45,13 +44,11 @@ public class MainActivity extends AppCompatActivity {
                 Item item2 = new Item("ITEM TEST 2 KIT 1", "0");
                 lesItems.add(item1);
                 lesItems.add(item2);
-
                 List<Item> lesItems2 = new ArrayList<>();
                 Item item3 = new Item("ITEM TEST 3 KIT 2", "1.5");
                 Item item4 = new Item("ITEM TEST 4 KIT 2", "AZER");
                 lesItems2.add(item3);
                 lesItems2.add(item4);
-
                 accesLocal.ajoutListItem(lesItems, "Munchkin");
                 accesLocal.ajoutListItem(lesItems2, "Un Kit Nul");
             }
@@ -66,28 +63,23 @@ public class MainActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                adapter.notifyDataSetChanged();
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                    adapter.getFilter().filter(newText);
-                    adapter.notifyDataSetChanged();
+               templist = new ArrayList<>();
+                for (String temp : listNomsKits){
+                    if (temp.toLowerCase().startsWith(newText.toLowerCase())){
+                        templist.add(temp);
+                    }
+                }
+                adapter = new MyCustomAdapter(templist, MainActivity.this);
+                kitsView.setAdapter(adapter);
                 return true;
-            }
-        }
-        );
-        searchView.setOnSearchClickListener(new SearchView.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                searchView.clearFocus();
             }
         });
     return super.onCreateOptionsMenu(menu);
     }
 
 }
-
-//    getWindowManager().getDefaultDisplay().getMetrics(metrics);
-//    private DisplayMetrics metrics = new DisplayMetrics();
