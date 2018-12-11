@@ -1,8 +1,8 @@
 package com.example.pierre.jeuxdesocit;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +14,6 @@ import java.util.List;
 
 public class CreerKitActivity extends AppCompatActivity {
 
-    public static List<String> listItemsAAjouter;
     private TextView titre;
     private String nomKit;
     private List<String> lesItems;
@@ -23,6 +22,7 @@ public class CreerKitActivity extends AppCompatActivity {
     private Button validerKit;
     private boolean probNomKit;
     private String messageErreur;
+    public static List<String> listItemsAAjouter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +69,7 @@ public class CreerKitActivity extends AppCompatActivity {
                 } else {
                     for (String unItem : listItemsAAjouter) {
                         MainActivity.accesLocal.ajoutItem(new Item(unItem, ""), nomKit);
-                        Log.e("azerty", "" + unItem + " dans " + nomKit);
+                        Log.e("azerty","" + unItem + " dans " +nomKit);
                     }
                     Intent intent = new Intent(CreerKitActivity.this, MainActivity.class);
                     startActivity(intent);
