@@ -15,7 +15,8 @@
         android:ems="10"
         android:gravity="center"
         android:hint="Nom de l'application"
-        android:inputType="text" />
+        android:inputType="text"
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/validerKit"
