@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#606060"
-    tools:context=".CreerKitActivity">
+    tools:context=".CreerKitActivity"
+    android:id="@+id/activity_creer_kit">
 
     <EditText
         android:id="@+id/nomKit"

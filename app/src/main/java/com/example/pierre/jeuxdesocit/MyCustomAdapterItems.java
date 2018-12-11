@@ -67,7 +67,6 @@ public class MyCustomAdapterItems extends BaseAdapter implements ListAdapter {
 
         }
 
-
         cocherItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
