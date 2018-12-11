@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         lesItems.add(new Item("ITEM TEST 3", ""));
         lesItems.add(new Item("ITEM TEST 4", ""));
         lesItems.add(new Item("ITEM TEST 5", ""));
-        accesLocal.ajoutListItem(lesItems, "Les items");
+        accesLocal.ajoutListItem(lesItems, "");
 
         create_kit.setText("Créer Kit");
         create_kit.setOnClickListener(new View.OnClickListener(){
