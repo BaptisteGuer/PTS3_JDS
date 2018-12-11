@@ -105,7 +105,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
             @Override
             public void onClick(View v) {
                 MainActivity.listNomsKits.remove(getItem(position));
-                MainActivity.accesLocal.supprimerKit(listNomsKits.get(position));
+                MainActivity.accesLocal.supprimerKit(getItem(position));
                 listNomsKits.remove(position);
                 notifyDataSetChanged();
                 popup.dismiss();
