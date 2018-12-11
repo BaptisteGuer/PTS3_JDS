@@ -48,9 +48,6 @@ public class MainActivity extends AppCompatActivity {
         create_kit.setText("Créer Kit");
         create_kit.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                List<Item> lesItems2 = new ArrayList<>();
-                lesItems2.add(new Item("ITEM TEST 4", ""));
-                accesLocal.ajoutListItem(lesItems2, "LoupGarou");
                 Intent intent = new Intent(MainActivity.this, CreerKitActivity.class);
                 startActivity(intent);
             }

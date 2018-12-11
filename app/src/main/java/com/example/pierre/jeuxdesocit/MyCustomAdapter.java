@@ -104,8 +104,8 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         btnValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MainActivity.listNomsKits.remove(getItem(position));
                 MainActivity.accesLocal.supprimerKit(getItem(position));
+                MainActivity.listNomsKits.remove(getItem(position));
                 listNomsKits.remove(position);
                 notifyDataSetChanged();
                 popup.dismiss();

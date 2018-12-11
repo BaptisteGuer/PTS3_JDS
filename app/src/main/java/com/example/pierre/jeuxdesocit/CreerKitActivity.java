@@ -20,6 +20,8 @@ public class CreerKitActivity extends AppCompatActivity {
     private ListView itemsView;
     private MyCustomAdapterItems2 adapter;
     private Button validerKit;
+    private boolean probNomKit;
+    private String messageErreur;
     public static List<String> listItemsAAjouter;
 
     @Override
@@ -35,16 +37,43 @@ public class CreerKitActivity extends AppCompatActivity {
         lesItems = MainActivity.accesLocal.getListItems();
         adapter = new MyCustomAdapterItems2(lesItems, this);
         itemsView.setAdapter(adapter);
+        probNomKit = false;
+        messageErreur = "Il n'y a pas d'erreur";
 
-        validerKit.setOnClickListener(new View.OnClickListener(){
+        validerKit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 nomKit = titre.getText().toString();
-                for (String unItem : listItemsAAjouter) {
-                    MainActivity.accesLocal.ajoutItem(new Item(unItem,""), nomKit);
-                    Log.e("azerty","" + unItem + " dans " +nomKit);
+
+                if (nomKit.isEmpty()) {
+                    probNomKit = true;
+                    messageErreur = "Veuillez renseigner le nom du kit";
                 }
-                Intent intent = new Intent(CreerKitActivity.this, MainActivity.class);
-                startActivity(intent);
+
+                for (String unKit : MainActivity.accesLocal.getListKits()) {
+                    if (unKit.equals(nomKit)) {
+                        probNomKit = true;
+                        messageErreur = "Le nom du kit est déjà pris";
+                    }
+                }
+
+                for (int i = 0; i < nomKit.length(); i++) {
+                    if (nomKit.charAt(i) == '\'' || nomKit.charAt(i) == '"' || nomKit.charAt(i) == '\\') {
+                        probNomKit = true;
+                        messageErreur = "Caractère interdit : ', \", \\";
+                    }
+                }
+
+                if (probNomKit) {
+                    Log.e("azerty", "ERREUR : " + messageErreur);
+                    probNomKit = false;
+                } else {
+                    for (String unItem : listItemsAAjouter) {
+                        MainActivity.accesLocal.ajoutItem(new Item(unItem, ""), nomKit);
+                        Log.e("azerty","" + unItem + " dans " +nomKit);
+                    }
+                    Intent intent = new Intent(CreerKitActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
