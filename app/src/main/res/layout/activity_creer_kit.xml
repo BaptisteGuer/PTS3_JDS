@@ -12,10 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:gravity="center"
         android:ems="10"
-        android:inputType="text"
-        android:text="Nom de l'application" />
+        android:gravity="center"
+        android:hint="Nom de l'application"
+        android:inputType="text" />
 
     <Button
         android:id="@+id/validerKit"
