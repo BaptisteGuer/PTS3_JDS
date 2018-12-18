@@ -68,7 +68,7 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         jouerKit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ParametrageActivity.class);
+                Intent intent = new Intent(context, GameActivity.class);
                 context.startActivity(intent);
 
             }
@@ -108,8 +108,6 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
                 String a = listNomsKits.get(position);
                 listNomsKits.remove(getItem(position));
                 MainActivity.listNomsKits.remove(a);
-
-                //listNomsKits.remove(position);
                 notifyDataSetChanged();
                 popup.dismiss();
             }
