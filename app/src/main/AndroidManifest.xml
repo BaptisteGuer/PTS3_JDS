@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".ModifierKitActivity" />
         <activity android:name=".ParametrageActivity" />
-        <activity android:name=".CreerKitActivity"></activity>
+        <activity android:name=".CreerKitActivity" />
+        <activity android:name=".GameActivity"></activity>
     </application>
 
 </manifest>
