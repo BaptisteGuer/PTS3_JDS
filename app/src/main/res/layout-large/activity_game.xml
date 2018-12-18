@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#606060"
-    tools:context=".GameActivity">
+    tools:context=".GameActivity"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -135,6 +136,7 @@
         android:layout_marginRight="84dp"
         android:gravity="center"
         android:text="TextView"
+        android:textColor="@android:color/white"
         android:textSize="24sp" />
 
     <TextView
@@ -149,6 +151,7 @@
         android:layout_marginRight="80dp"
         android:gravity="center"
         android:text="TextView"
+        android:textColor="@android:color/white"
         android:textSize="24sp" />
 
     <TextView
@@ -199,6 +202,7 @@
         android:gravity="center"
         android:hint="Entrez points"
         android:inputType="textPersonName"
+        android:textColor="@android:color/white"
         android:textSize="24sp" />
 
 </RelativeLayout>
