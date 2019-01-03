@@ -15,7 +15,7 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/joueurGauche"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             app:srcCompat="?android:attr/homeAsUpIndicator" />
@@ -29,7 +29,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/joueurDroite"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:rotation="180"
@@ -44,13 +44,13 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/imageButton"
+            android:id="@+id/itemGauche"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             app:srcCompat="?android:attr/homeAsUpIndicator" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/itemChoisi"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1000"
@@ -58,7 +58,7 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/itemDroite"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:rotation="180"
@@ -66,7 +66,7 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/item"
         android:layout_width="263dp"
         android:layout_height="245dp"
         android:layout_alignParentStart="true"
@@ -82,10 +82,10 @@
         app:srcCompat="@mipmap/ic_launcher" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/lancer"
         android:layout_width="168dp"
         android:layout_height="83dp"
-        android:layout_below="@+id/imageView4"
+        android:layout_below="@+id/item"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_marginStart="82dp"
@@ -93,29 +93,29 @@
         android:layout_marginTop="61dp"
         android:layout_marginEnd="36dp"
         android:layout_marginRight="36dp"
-        android:layout_toStartOf="@+id/button3"
-        android:layout_toLeftOf="@+id/button3"
+        android:layout_toStartOf="@+id/augmenter"
+        android:layout_toLeftOf="@+id/augmenter"
         android:text="Button"
         android:textSize="25sp" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/augmenter"
         android:layout_width="136dp"
         android:layout_height="64dp"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/entrerScore"
         android:layout_marginTop="14dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:layout_toStartOf="@+id/button4"
-        android:layout_toLeftOf="@+id/button4"
+        android:layout_toStartOf="@+id/baisser"
+        android:layout_toLeftOf="@+id/baisser"
         android:text="+"
         android:textSize="25sp" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/baisser"
         android:layout_width="136dp"
         android:layout_height="64dp"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/entrerScore"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="14dp"
@@ -125,7 +125,7 @@
         android:textSize="25sp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/timer"
         android:layout_width="153dp"
         android:layout_height="54dp"
         android:layout_below="@+id/textView4"
@@ -140,7 +140,7 @@
         android:textSize="24sp" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/score"
         android:layout_width="153dp"
         android:layout_height="54dp"
         android:layout_below="@+id/textView5"
@@ -175,7 +175,7 @@
         android:id="@+id/textView5"
         android:layout_width="171dp"
         android:layout_height="82dp"
-        android:layout_below="@+id/textView3"
+        android:layout_below="@+id/timer"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="41dp"
@@ -189,10 +189,10 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/entrerScore"
         android:layout_width="178dp"
         android:layout_height="69dp"
-        android:layout_below="@+id/textView6"
+        android:layout_below="@+id/score"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_marginTop="37dp"
