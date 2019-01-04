@@ -13,6 +13,8 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,7 +84,28 @@ public class CreerKitActivity extends AppCompatActivity {
                     probNomKit = false;
                 } else {
                     for (String unItem : listItemsAAjouter) {
-                        MainActivity.accesLocal.ajoutItem(new Item(unItem, ""), nomKit);
+                              Log.e("azerty","" + unItem + " dans " +nomKit +unItem.split(" ")[0]);
+                              Class<?> clazz = null;
+                              try {
+                                        clazz = Class.forName("com.example.pierre.jeuxdesocit."+unItem);
+                              } catch (ClassNotFoundException e) {}
+                              Constructor<?> constructor = null;
+                              try {
+                                        Log.e("ghjklm","" + unItem + " dans " +nomKit +unItem.split(" ")[0]);
+                                        constructor = clazz.getConstructor(String.class);
+                                        Log.e("ghjklm","" + unItem + " dans " +nomKit +unItem.split(" ")[0]);
+                              } catch (NoSuchMethodException e) {
+                              }
+                              try {
+                                        MainActivity.accesLocal.ajoutItem((Item) constructor.newInstance(  "34"), nomKit);
+                              } catch (IllegalAccessException e) {
+                                        e.printStackTrace();
+                              } catch (InstantiationException e) {
+                                        e.printStackTrace();
+                              } catch (InvocationTargetException e) {
+                                        e.printStackTrace();
+                              }
+                              Log.e("azerty","" + unItem + " dans " +nomKit);
                     }
                     Intent intent = new Intent(CreerKitActivity.this, MainActivity.class);
                     startActivity(intent);

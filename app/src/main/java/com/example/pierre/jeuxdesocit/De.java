@@ -1,11 +1,25 @@
 package com.example.pierre.jeuxdesocit;
 
-public class De extends Item{
+
+public class De implements Item{
 
     private String valeur;
 
-    public De() {
-        super("Dé", "6");
+    public De(String valeur) {
+        this.valeur = valeur;
+    }
+
+    public void setValeur(String valeur) {
+        this.valeur = valeur;
+    }
+
+    @Override
+    public String getNom() {
+        return "De";
+    }
+
+    public String getValeur() {
+        return valeur;
     }
 
     public String faireAction() {

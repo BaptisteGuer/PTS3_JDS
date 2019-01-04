@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -66,12 +68,15 @@ public class AccesLocal {
         return stringList;
     }
 
-    public Item getItem(String nomItem, String nomKit){
+    public Item getItem(String nomItem, String nomKit) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
         bd = accesBD.getReadableDatabase();
         String req = "SELECT DISTINCT nom, valeur FROM Item WHERE nom='" + nomItem + "' AND nomKit='" + nomKit + "'";
         Cursor cursor = bd.rawQuery(req, null);
         cursor.moveToFirst();
-        Item item = new Item(cursor.getString(0),cursor.getString(1));
+        String TypeItem = cursor.getString(0);
+        Class<?> clazz = Class.forName("com.example.pierre.jeuxdesocit."+TypeItem);
+        Constructor<?> constructor = clazz.getConstructor(String.class, String.class);
+        Item item = (Item) constructor.newInstance(cursor.getString(0),cursor.getString(1));
         return item;
     }
 
@@ -86,8 +91,11 @@ public class AccesLocal {
     }
 
     public void ajoutItem(Item item, String nomKit) {
+              Log.e("yuiop", item.getClass().getName());
         bd = accesBD.getWritableDatabase();
         String req = "INSERT INTO Item (nom, valeur, nomKit) VALUES ";
+        item.getClass().getName();
+
         req += "(\"" + item.getNom() + "\",\"" + item.getValeur() + "\",\"" + nomKit + "\")";
         bd.execSQL(req);
     }
