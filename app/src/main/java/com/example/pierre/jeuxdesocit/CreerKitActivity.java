@@ -83,7 +83,6 @@ public class CreerKitActivity extends AppCompatActivity {
                 } else {
                     for (String unItem : listItemsAAjouter) {
                         MainActivity.accesLocal.ajoutItem(new Item(unItem, ""), nomKit);
-                        Log.e("azerty","" + unItem + " dans " +nomKit);
                     }
                     Intent intent = new Intent(CreerKitActivity.this, MainActivity.class);
                     startActivity(intent);

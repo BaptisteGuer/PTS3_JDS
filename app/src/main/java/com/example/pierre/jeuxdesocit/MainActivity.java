@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private ListView kitsView;
     private MyCustomAdapter adapter;
     private Button create_kit;
+    private List<Item> lesItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MyCustomAdapter(listNomsKits, this);
         kitsView.setAdapter(adapter);
 
-        List<Item> lesItems = new ArrayList<>();
-        lesItems.add(new Item("ITEM TEST 1", ""));
-        lesItems.add(new Item("ITEM TEST 2", ""));
+        lesItems = new ArrayList<>();
+        lesItems.add(new De());
+        lesItems.add(new Piece());
         lesItems.add(new Item("ITEM TEST 3", ""));
         lesItems.add(new Item("ITEM TEST 4", ""));
         lesItems.add(new Item("ITEM TEST 5", ""));

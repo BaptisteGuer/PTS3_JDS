@@ -39,7 +39,6 @@ public class ModifierKitActivity extends AppCompatActivity {
             public void onClick(View v) {
                 List<String> test = MainActivity.accesLocal.getListItems(nomKit);
                 for (String item : test) {
-                    Log.e("azerty","" + item + " dans " + nomKit);
                 }
                 Intent intent = new Intent(ModifierKitActivity.this, MainActivity.class);
                 startActivity(intent);

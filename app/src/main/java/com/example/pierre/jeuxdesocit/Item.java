@@ -10,7 +10,6 @@ public class Item {
     public Item(String nom, String valeur){
         this.nom = nom;
         this.valeur = valeur;
-
     }
 
     public String getNom() {
@@ -22,6 +21,6 @@ public class Item {
     }
 
     public String faireAction() {
-        return "";
+        return "je suis un item";
     }
 }
