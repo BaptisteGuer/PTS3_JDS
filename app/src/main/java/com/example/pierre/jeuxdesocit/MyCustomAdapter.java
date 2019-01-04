@@ -68,7 +68,8 @@ public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
         jouerKit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, GameActivity.class);
+                Intent intent = new Intent(context, ParametrageActivity.class);
+                intent.putExtra("nomKit", getItem(position));
                 context.startActivity(intent);
 
             }
