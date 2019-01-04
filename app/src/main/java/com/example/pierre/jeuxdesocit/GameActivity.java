@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +40,19 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         lesItems = new ArrayList<>();
         for (String nomItem : MainActivity.accesLocal.getListItems(nomKit)) {
-            lesItems.add(MainActivity.accesLocal.getItem(nomItem, nomKit));
+            try {
+                lesItems.add(MainActivity.accesLocal.getItem(nomItem, nomKit));
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            }
         }
 
         augmenter.setOnClickListener(this);

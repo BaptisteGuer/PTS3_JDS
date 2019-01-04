@@ -1,27 +1,14 @@
 package com.example.pierre.jeuxdesocit;
 
 
-public class Item {
+public interface Item {
 
-    private String nom;
-    private String valeur;
+     String nom = "";
+     String valeur = "";
 
+    String getNom() ;
 
-    public Item(String nom, String valeur){
-        this.nom = nom;
-        this.valeur = valeur;
+    String getValeur();
 
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public String getValeur() {
-        return valeur;
-    }
-
-    public String faireAction() {
-        return "";
-    }
+    String faireAction() ;
 }
