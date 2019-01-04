@@ -20,4 +20,8 @@ public class Item {
     public String getValeur() {
         return valeur;
     }
+
+    public String faireAction() {
+        return "";
+    }
 }

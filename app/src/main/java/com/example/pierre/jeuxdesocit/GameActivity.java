@@ -7,26 +7,41 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
+    private String nomKit;
     private Button augmenter;
     private Button baisser;
     private EditText entrerScore;
+    private TextView nomJoueurTv;
     private TextView score;
     private Joueur joueurSelectionne;
-
+    private Item itemSelectionne;
+    private List<Item> lesItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        joueurSelectionne = new Joueur("test"); //Joueur de test en attente de la liste des joueurs
+        joueurSelectionne = new Joueur("Joueur1(test)"); //Joueur de test en attente de la liste des joueurs
+        nomKit = getIntent().getStringExtra("nomKit");
         score = findViewById(R.id.score);
         score.setText(Integer.toString(joueurSelectionne.getScore()));
         augmenter = findViewById(R.id.augmenter);
         entrerScore = findViewById(R.id.entrerScore);
         baisser = findViewById(R.id.baisser);
+        nomJoueurTv = findViewById(R.id.JoueurChoisi);
+        nomJoueurTv.setText(joueurSelectionne.getNom());
+
+        lesItems = new ArrayList<>();
+        for (String nomItem : MainActivity.accesLocal.getListItems(nomKit)) {
+            lesItems.add(MainActivity.accesLocal.getItem(nomItem, nomKit));
+        }
+
         augmenter.setOnClickListener(this);
         baisser.setOnClickListener(this);
     }
