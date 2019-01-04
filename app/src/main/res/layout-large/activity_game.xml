@@ -201,7 +201,7 @@
         android:ems="10"
         android:gravity="center"
         android:hint="Entrez points"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:textColor="@android:color/white"
         android:textSize="24sp" />
 

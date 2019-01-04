@@ -74,12 +74,20 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         {
             if(v.getId()==R.id.augmenter){
-                joueurSelectionne.setScore(joueurSelectionne.getScore()+Integer.parseInt(entrerScore.getText().toString()));
-                score.setText(Integer.toString(joueurSelectionne.getScore()));
+                try {
+                    joueurSelectionne.setScore(joueurSelectionne.getScore() + Integer.parseInt(entrerScore.getText().toString()));
+                    score.setText(Integer.toString(joueurSelectionne.getScore()));
+                }catch (NumberFormatException e){
+                    entrerScore.setError("Veuillez entrer un nombre");
+                }
             }
             if(v.getId()==R.id.baisser){
-                joueurSelectionne.setScore(joueurSelectionne.getScore()-Integer.parseInt(entrerScore.getText().toString()));
-                score.setText(Integer.toString(joueurSelectionne.getScore()));
+                    try {
+                        joueurSelectionne.setScore(joueurSelectionne.getScore() - Integer.parseInt(entrerScore.getText().toString()));
+                        score.setText(Integer.toString(joueurSelectionne.getScore()));
+                    }catch (NumberFormatException e){
+                        entrerScore.setError("Veuillez entrer un nombre");
+                    }
             }
             if (v.getId()==R.id.lancer){
                 resTv.setText(lesItems.get(positionItemSelectionne).faireAction());
