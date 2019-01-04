@@ -111,17 +111,13 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 resTv.setText(lesItems.get(positionItemSelectionne).faireAction());
             }
             if (v.getId()==R.id.joueurDroite){
-                Log.e("azerty", "on rentre dans joueurDroite");
                 if(positionJoueurSelectionne == nbJoueurs-1){
                     positionJoueurSelectionne = 0;
-                    Log.e("azerty", "position = dernier");
                 } else {
                     positionJoueurSelectionne++;
-                    Log.e("azerty", "position = pas dernier");
                 }
                 nomJoueurTv.setText(lesJoueurs.get(positionJoueurSelectionne).getNom());
                 score.setText(Integer.toString(lesJoueurs.get(positionJoueurSelectionne).getScore()));
-                Log.e("azerty", "actualise affichage (nom joueur + score)");
             }
             if(v.getId()==R.id.joueurGauche){
                 if(positionJoueurSelectionne == 0){
