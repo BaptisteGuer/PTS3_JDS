@@ -39,11 +39,8 @@ public class MainActivity extends AppCompatActivity {
         kitsView.setAdapter(adapter);
 
         lesItems = new ArrayList<>();
-        lesItems.add(new De("34"));
-        lesItems.add(new De("34"));
-        lesItems.add(new De("34"));
-        lesItems.add(new De("34"));
-        lesItems.add(new De("34"));
+        lesItems.add(new De());
+        lesItems.add(new Piece());
         accesLocal.ajoutListItem(lesItems, "");
 
         create_kit.setText("Créer Kit");

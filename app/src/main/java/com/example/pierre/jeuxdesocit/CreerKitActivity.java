@@ -84,20 +84,17 @@ public class CreerKitActivity extends AppCompatActivity {
                     probNomKit = false;
                 } else {
                     for (String unItem : listItemsAAjouter) {
-                              Log.e("azerty","" + unItem + " dans " +nomKit +unItem.split(" ")[0]);
                               Class<?> clazz = null;
                               try {
-                                        clazz = Class.forName("com.example.pierre.jeuxdesocit."+unItem);
+                                  clazz = Class.forName("com.example.pierre.jeuxdesocit."+unItem);
+                                  Log.e("azerty",""+clazz);
                               } catch (ClassNotFoundException e) {}
                               Constructor<?> constructor = null;
                               try {
-                                        Log.e("ghjklm","" + unItem + " dans " +nomKit +unItem.split(" ")[0]);
-                                        constructor = clazz.getConstructor(String.class);
-                                        Log.e("ghjklm","" + unItem + " dans " +nomKit +unItem.split(" ")[0]);
-                              } catch (NoSuchMethodException e) {
-                              }
+                                        constructor = clazz.getConstructor();
+                              } catch (NoSuchMethodException e) {}
                               try {
-                                        MainActivity.accesLocal.ajoutItem((Item) constructor.newInstance(  "34"), nomKit);
+                                        MainActivity.accesLocal.ajoutItem((Item) constructor.newInstance(), nomKit);
                               } catch (IllegalAccessException e) {
                                         e.printStackTrace();
                               } catch (InstantiationException e) {
@@ -105,7 +102,6 @@ public class CreerKitActivity extends AppCompatActivity {
                               } catch (InvocationTargetException e) {
                                         e.printStackTrace();
                               }
-                              Log.e("azerty","" + unItem + " dans " +nomKit);
                     }
                     Intent intent = new Intent(CreerKitActivity.this, MainActivity.class);
                     startActivity(intent);

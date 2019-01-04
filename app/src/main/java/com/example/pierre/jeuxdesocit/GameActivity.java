@@ -69,33 +69,29 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         lesJoueurs.add(new Joueur("Joueur3"));
         lesJoueurs.add(new Joueur("Joueur4"));
         positionJoueurSelectionne = 0;
-//        nbJoueurs = lesItems.size();
-        nbJoueurs = 4;
+        nbJoueurs = lesJoueurs.size();
         nomJoueurTv.setText(lesJoueurs.get(positionJoueurSelectionne).getNom());
-//        score.setText(Integer.toString(lesJoueurs.get(positionJoueurSelectionne).getScore()));
-        score.setText("0");
+        score.setText(Integer.toString(lesJoueurs.get(positionJoueurSelectionne).getScore()));
 
         lesItems = new ArrayList<>();
-//        for (String nomItem : MainActivity.accesLocal.getListItems(nomKit)) {
-//            try {
-//                lesItems.add(MainActivity.accesLocal.getItem(nomItem, nomKit));
-//            } catch (ClassNotFoundException e) {
-//                e.printStackTrace();
-//            } catch (NoSuchMethodException e) {
-//                e.printStackTrace();
-//            } catch (IllegalAccessException e) {
-//                e.printStackTrace();
-//            } catch (InvocationTargetException e) {
-//                e.printStackTrace();
-//            } catch (InstantiationException e) {
-//                e.printStackTrace();
-//            }
-//        }
-        lesItems.add(new De("6"));
-//        lesItems.add(new Piece());
+        for (String nomItem : MainActivity.accesLocal.getListItems(nomKit)) {
+            try {
+                lesItems.add(MainActivity.accesLocal.getItem(nomItem, nomKit));
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            }
+        }
         positionItemSelectionne = 0;
-//        nbItems = lesItems.size();
-        nbItems = 1;
+        nbItems = lesItems.size();
+        Log.e("azerty",""+nbItems);
         nomItemTv.setText(lesItems.get(positionItemSelectionne).getNom());
     }
 

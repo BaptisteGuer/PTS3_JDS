@@ -74,7 +74,7 @@ public class AccesLocal {
         Cursor cursor = bd.rawQuery(req, null);
         cursor.moveToFirst();
         String TypeItem = cursor.getString(0);
-        Class<?> clazz = Class.forName("com.example.pierre.jeuxdesocit."+TypeItem);
+        Class<?> clazz = Class.forName("com.example.pierre.jeuxdesocit." + TypeItem);
         Constructor<?> constructor = clazz.getConstructor(String.class, String.class);
         Item item = (Item) constructor.newInstance(cursor.getString(0),cursor.getString(1));
         return item;
@@ -113,19 +113,11 @@ public class AccesLocal {
         bd.execSQL(req);
     }
 
-    public void supprimerItem(Item item, String nomKit) {
+    public void supprimerItem(String nomItem, String nomKit) {
         bd = accesBD.getWritableDatabase();
-        String req = "DELETE FROM Item WHERE nom=\"" + item.getNom() + "\" AND nomKit=\"" + nomKit + "\";";
+        String req = "DELETE FROM Item WHERE nom=\"" + nomItem + "\" AND nomKit=\"" + nomKit + "\";";
         bd.execSQL(req);
     }
-
-//    public void supprimerListItem(List<Item> lesItems, String nomKit) {
-//        bd = accesBD.getWritableDatabase();
-//        for (Item item : lesItems) {
-//            String req = "DELETE FROM Item WHERE nom=\"" + item + "\" AND nomKit=\"" + nomKit + "\";";
-//            bd.execSQL(req);
-//        }
-//    }
 
     public void supprimerKit(String nomKit) {
         bd = accesBD.getWritableDatabase();

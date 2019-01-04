@@ -73,7 +73,6 @@ public class MyCustomAdapterItems extends BaseAdapter implements ListAdapter {
                               @Override
                               public void onClick(View v) {
                                         if (cocherItem.isChecked()) {
-                                                  // ajouter item a la liste des items à mettre dans la bdd
                                                   Class<?> clazz = null;
                                                   try {
                                                             clazz = Class.forName("com.example.pierre.jeuxdesocit." + getItem(position));
@@ -82,12 +81,12 @@ public class MyCustomAdapterItems extends BaseAdapter implements ListAdapter {
                                                   }
                                                   Constructor<?> constructor = null;
                                                   try {
-                                                           constructor = clazz.getConstructor(String.class, String.class);
+                                                           constructor = clazz.getConstructor();
                                                   } catch (NoSuchMethodException e) {
                                                             e.printStackTrace();
                                                   }
                                                   try {
-                                                            MainActivity.accesLocal.ajoutItem((Item) constructor.newInstance( ""), nomKit);
+                                                            MainActivity.accesLocal.ajoutItem((Item) constructor.newInstance(), nomKit);
                                                   } catch (IllegalAccessException e) {
                                                             e.printStackTrace();
                                                   } catch (InstantiationException e) {
@@ -96,20 +95,7 @@ public class MyCustomAdapterItems extends BaseAdapter implements ListAdapter {
                                                             e.printStackTrace();
                                                   }
                                         } else {
-                                                  // supprimer item a la liste des items à mettre dans la bdd
-                                                  try {
-                                                            MainActivity.accesLocal.supprimerItem(MainActivity.accesLocal.getItem(getItem(position), nomKit), nomKit);
-                                                  } catch (ClassNotFoundException e) {
-                                                            e.printStackTrace();
-                                                  } catch (NoSuchMethodException e) {
-                                                            e.printStackTrace();
-                                                  } catch (IllegalAccessException e) {
-                                                            e.printStackTrace();
-                                                  } catch (InvocationTargetException e) {
-                                                            e.printStackTrace();
-                                                  } catch (InstantiationException e) {
-                                                            e.printStackTrace();
-                                                  }
+                                                  MainActivity.accesLocal.supprimerItem(getItem(position), nomKit);
                                         }
                               }
                     });

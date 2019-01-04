@@ -3,8 +3,8 @@ package com.example.pierre.jeuxdesocit;
 
 public interface Item {
 
-     String nom = "";
-     String valeur = "";
+    String nom = "";
+    String valeur = "";
 
     String getNom() ;
 
