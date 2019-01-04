@@ -20,33 +20,38 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private Button baisser;
     private ImageButton itemDroite;
     private ImageButton itemGauche;
+    private ImageButton joueurDroite;
+    private ImageButton joueurGauche;
     private Button lancer;
     private EditText entrerScore;
     private TextView nomJoueurTv;
     private TextView nomItemTv;
     private TextView score;
     private TextView resTv;
-    private Joueur joueurSelectionne;
+    private int positionJoueurSelectionne;
     private int positionItemSelectionne;
     private int nbItems;
+    private int nbJoueurs;
     private List<Item> lesItems;
+    private List<Joueur> lesJoueurs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-        joueurSelectionne = new Joueur("Joueur1(test)"); //Joueur de test en attente de la liste des joueurs
+
         nomKit = getIntent().getStringExtra("nomKit");
-        score = findViewById(R.id.score);
-        score.setText(Integer.toString(joueurSelectionne.getScore()));
         augmenter = findViewById(R.id.augmenter);
-        entrerScore = findViewById(R.id.entrerScore);
         baisser = findViewById(R.id.baisser);
+        joueurDroite = findViewById(R.id.joueurDroite);
+        joueurGauche = findViewById(R.id.joueurGauche);
+        nomJoueurTv = findViewById(R.id.JoueurChoisi);
+        score = findViewById(R.id.score);
+        entrerScore = findViewById(R.id.entrerScore);
         itemDroite = findViewById(R.id.itemDroite);
         itemGauche = findViewById(R.id.itemGauche);
+        nomItemTv = findViewById(R.id.itemChoisi);
         lancer = findViewById(R.id.lancer);
-        nomJoueurTv = findViewById(R.id.JoueurChoisi);
-        nomJoueurTv.setText(joueurSelectionne.getNom());
         resTv = findViewById(R.id.resTv);
 
         augmenter.setOnClickListener(this);
@@ -54,18 +59,31 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         itemDroite.setOnClickListener(this);
         itemGauche.setOnClickListener(this);
         lancer.setOnClickListener(this);
-        
+        joueurDroite.setOnClickListener(this);
+        joueurGauche.setOnClickListener(this);
+
+        lesJoueurs = new ArrayList<>();
+        lesJoueurs.add(new Joueur("Joueur1"));
+        lesJoueurs.add(new Joueur("Joueur2"));
+        lesJoueurs.add(new Joueur("Joueur3"));
+        lesJoueurs.add(new Joueur("Joueur4"));
+        positionJoueurSelectionne = 0;
+//        nbJoueurs = lesItems.size();
+        nbJoueurs = 4;
+        nomJoueurTv.setText(lesJoueurs.get(positionJoueurSelectionne).getNom());
+//        score.setText(Integer.toString(lesJoueurs.get(positionJoueurSelectionne).getScore()));
+        score.setText("0");
+
         lesItems = new ArrayList<>();
 //        for (String nomItem : MainActivity.accesLocal.getListItems(nomKit)) {
 //            lesItems.add(MainActivity.accesLocal.getItem(nomItem, nomKit));
 //        }
         lesItems.add(new De());
         lesItems.add(new Piece());
-        lesItems.add(new Item("ITEM TEST 2", ""));
+        lesItems.add(new Item("ITEM TEST 1", ""));
         positionItemSelectionne = 0;
 //        nbItems = lesItems.size();
         nbItems = 3;
-        nomItemTv = findViewById(R.id.itemChoisi);
         nomItemTv.setText(lesItems.get(positionItemSelectionne).getNom());
     }
 
@@ -75,16 +93,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         {
             if(v.getId()==R.id.augmenter){
                 try {
-                    joueurSelectionne.setScore(joueurSelectionne.getScore() + Integer.parseInt(entrerScore.getText().toString()));
-                    score.setText(Integer.toString(joueurSelectionne.getScore()));
+                    lesJoueurs.get(positionJoueurSelectionne).setScore(lesJoueurs.get(positionJoueurSelectionne).getScore() + Integer.parseInt(entrerScore.getText().toString()));
+                    score.setText(Integer.toString(lesJoueurs.get(positionJoueurSelectionne).getScore()));
                 }catch (NumberFormatException e){
                     entrerScore.setError("Veuillez entrer un nombre");
                 }
             }
             if(v.getId()==R.id.baisser){
                     try {
-                        joueurSelectionne.setScore(joueurSelectionne.getScore() - Integer.parseInt(entrerScore.getText().toString()));
-                        score.setText(Integer.toString(joueurSelectionne.getScore()));
+                        lesJoueurs.get(positionJoueurSelectionne).setScore(lesJoueurs.get(positionJoueurSelectionne).getScore() - Integer.parseInt(entrerScore.getText().toString()));
+                        score.setText(Integer.toString(lesJoueurs.get(positionJoueurSelectionne).getScore()));
                     }catch (NumberFormatException e){
                         entrerScore.setError("Veuillez entrer un nombre");
                     }
@@ -93,10 +111,26 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 resTv.setText(lesItems.get(positionItemSelectionne).faireAction());
             }
             if (v.getId()==R.id.joueurDroite){
-                //On passe au prochain joueur droite
+                Log.e("azerty", "on rentre dans joueurDroite");
+                if(positionJoueurSelectionne == nbJoueurs-1){
+                    positionJoueurSelectionne = 0;
+                    Log.e("azerty", "position = dernier");
+                } else {
+                    positionJoueurSelectionne++;
+                    Log.e("azerty", "position = pas dernier");
+                }
+                nomJoueurTv.setText(lesJoueurs.get(positionJoueurSelectionne).getNom());
+                score.setText(Integer.toString(lesJoueurs.get(positionJoueurSelectionne).getScore()));
+                Log.e("azerty", "actualise affichage (nom joueur + score)");
             }
             if(v.getId()==R.id.joueurGauche){
-                //On passe au prochain joueur gauche
+                if(positionJoueurSelectionne == 0){
+                    positionJoueurSelectionne = nbJoueurs-1;
+                } else {
+                    positionJoueurSelectionne--;
+                }
+                nomJoueurTv.setText(lesJoueurs.get(positionJoueurSelectionne).getNom());
+                score.setText(Integer.toString(lesJoueurs.get(positionJoueurSelectionne).getScore()));
             }
             if(v.getId()==R.id.itemDroite){
                 if(positionItemSelectionne == nbItems-1){
