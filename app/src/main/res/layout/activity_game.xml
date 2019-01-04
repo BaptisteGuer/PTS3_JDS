@@ -19,13 +19,20 @@
             android:layout_height="match_parent"
             app:srcCompat="?android:attr/homeAsUpIndicator" />
 
-        <ImageView
+        <!--<ImageView-->
+            <!--android:id="@+id/JoueurChoisi"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1000"-->
+            <!--app:srcCompat="@android:drawable/sym_def_app_icon"-->
+            <!--tools:srcCompat="@tools:sample/avatars" />-->
+
+        <TextView
             android:id="@+id/JoueurChoisi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1000"
-            app:srcCompat="@android:drawable/sym_def_app_icon"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:text="nomDuJoueur" />
 
         <ImageButton
             android:id="@+id/joueurDroite"
