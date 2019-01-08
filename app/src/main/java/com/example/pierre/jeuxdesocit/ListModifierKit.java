@@ -18,13 +18,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyCustomAdapterItems extends BaseAdapter implements ListAdapter {
+public class ListModifierKit extends BaseAdapter implements ListAdapter {
 
           private List<String> listNomsItems;
           private Context context;
           private String nomKit;
 
-          public MyCustomAdapterItems(List<String> listNomsItems, String nomKit, Context context) {
+          public ListModifierKit(List<String> listNomsItems, String nomKit, Context context) {
                     this.listNomsItems = listNomsItems;
                     this.context = context;
                     this.nomKit = nomKit;

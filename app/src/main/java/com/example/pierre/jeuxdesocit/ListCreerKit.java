@@ -1,12 +1,9 @@
 package com.example.pierre.jeuxdesocit;
 
-import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
@@ -15,13 +12,13 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class MyCustomAdapterItems2 extends BaseAdapter implements ListAdapter {
+public class ListCreerKit extends BaseAdapter implements ListAdapter {
 
     private LinearLayout layout;
     private List<String> listNomsItems;
     private Context context;
 
-    public MyCustomAdapterItems2(List<String> listNomsItems, Context context) {
+    public ListCreerKit(List<String> listNomsItems, Context context) {
         this.listNomsItems = listNomsItems;
         this.context = context;
     }

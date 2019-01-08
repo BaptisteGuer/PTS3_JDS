@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public static List<String> listNomsKits;
     public List<String> templist;
     private ListView kitsView;
-    private MyCustomAdapter adapter;
+    private ListKits adapter;
     private Button create_kit;
     private List<Item> lesItems;
 
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         accesLocal = new AccesLocal(this);
 
         listNomsKits.addAll(accesLocal.getListKits());
-        adapter = new MyCustomAdapter(listNomsKits, this);
+        adapter = new ListKits(listNomsKits, this);
         kitsView.setAdapter(adapter);
 
         lesItems = new ArrayList<>();
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                         templist.add(temp);
                     }
                 }
-                adapter = new MyCustomAdapter(templist, MainActivity.this);
+                adapter = new ListKits(templist, MainActivity.this);
                 kitsView.setAdapter(adapter);
                 return true;
             }

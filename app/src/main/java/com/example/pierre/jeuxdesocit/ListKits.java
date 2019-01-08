@@ -16,12 +16,12 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class MyCustomAdapter extends BaseAdapter implements ListAdapter {
+public class ListKits extends BaseAdapter implements ListAdapter {
     private List<String> listNomsKits;
     private Context context;
     private Dialog popup;
 
-    public MyCustomAdapter(List<String> listNomsKits, Context context) {
+    public ListKits(List<String> listNomsKits, Context context) {
         this.listNomsKits = listNomsKits;
         this.context = context;
         popup = new Dialog(context);

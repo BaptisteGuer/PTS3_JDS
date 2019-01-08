@@ -25,7 +25,7 @@ public class CreerKitActivity extends AppCompatActivity {
     private String nomKit;
     private List<String> lesItems;
     private ListView itemsView;
-    private MyCustomAdapterItems2 adapter;
+    private ListCreerKit adapter;
     private Button validerKit;
     private boolean probNomKit;
     private String messageErreur;
@@ -43,7 +43,7 @@ public class CreerKitActivity extends AppCompatActivity {
 
         listItemsAAjouter = new ArrayList<>();
         lesItems = MainActivity.accesLocal.getListItems();
-        adapter = new MyCustomAdapterItems2(lesItems, this);
+        adapter = new ListCreerKit(lesItems, this);
         itemsView.setAdapter(adapter);
         probNomKit = false;
         messageErreur = "Il n'y a pas d'erreur";
