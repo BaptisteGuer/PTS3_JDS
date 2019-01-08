@@ -23,9 +23,12 @@
         <TextView
             android:id="@+id/JoueurChoisi"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="nomDuJoueur" />
+            android:text="nomDuJoueur"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="34sp" />
 
         <ImageButton
             android:id="@+id/joueurDroite"
@@ -51,9 +54,12 @@
         <TextView
             android:id="@+id/itemChoisi"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="nomDuItem" />
+            android:text="nomDuItem"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="34sp" />
 
         <ImageButton
             android:id="@+id/itemDroite"
@@ -93,7 +99,7 @@
         android:layout_marginRight="36dp"
         android:layout_toStartOf="@+id/augmenter"
         android:layout_toLeftOf="@+id/augmenter"
-        android:text="Button"
+        android:text="Lancer"
         android:textSize="25sp" />
 
     <Button
@@ -135,7 +141,8 @@
         android:gravity="center"
         android:text="TextView"
         android:textColor="@android:color/white"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/score"
@@ -167,7 +174,8 @@
         android:textAllCaps="true"
         android:textColor="@color/colorAccent"
         android:textSize="25sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/textView5"
@@ -205,15 +213,19 @@
 
     <TextView
         android:id="@+id/resTv"
-        android:layout_width="118dp"
-        android:layout_height="41dp"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/lancer"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginStart="27dp"
-        android:layout_marginLeft="27dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginStart="82dp"
+        android:layout_marginLeft="82dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="36dp"
+        android:layout_toStartOf="@+id/augmenter"
+        android:gravity="center"
         android:text=""
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:textSize="30sp" />
 
 </RelativeLayout>

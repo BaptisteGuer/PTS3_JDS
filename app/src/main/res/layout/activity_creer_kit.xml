@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true"
         android:ems="10"
         android:gravity="center"
-        android:hint="Nom de l'application"
+        android:hint="Nom du jeu"
         android:inputType="text"
         android:textColor="@android:color/white" />
 
