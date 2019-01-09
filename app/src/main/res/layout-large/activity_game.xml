@@ -28,9 +28,10 @@
 
         <ImageButton
             android:id="@+id/joueurGauche"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="match_parent"
-            app:srcCompat="?android:attr/homeAsUpIndicator" />
+            app:srcCompat="?android:attr/homeAsUpIndicator"
+            android:background="@drawable/buttonstyle"/>
 
         <TextView
             android:id="@+id/JoueurChoisi"
@@ -45,10 +46,11 @@
 
         <ImageButton
             android:id="@+id/joueurDroite"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="match_parent"
             android:rotation="180"
-            app:srcCompat="?android:attr/homeAsUpIndicator" />
+            app:srcCompat="?android:attr/homeAsUpIndicator"
+            android:background="@drawable/buttonstyle"/>
     </LinearLayout>
 
     <LinearLayout
@@ -60,9 +62,10 @@
 
         <ImageButton
             android:id="@+id/itemGauche"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="match_parent"
-            app:srcCompat="?android:attr/homeAsUpIndicator" />
+            app:srcCompat="?android:attr/homeAsUpIndicator"
+            android:background="@drawable/buttonstyle"/>
 
         <TextView
             android:id="@+id/itemChoisi"
@@ -76,10 +79,11 @@
 
         <ImageButton
             android:id="@+id/itemDroite"
-            android:layout_width="wrap_content"
+            android:layout_width="75dp"
             android:layout_height="match_parent"
             android:rotation="180"
-            app:srcCompat="?android:attr/homeAsUpIndicator" />
+            app:srcCompat="?android:attr/homeAsUpIndicator"
+            android:background="@drawable/buttonstyle"/>
     </LinearLayout>
 
     <ImageView
@@ -113,7 +117,8 @@
         android:layout_toStartOf="@+id/augmenter"
         android:layout_toLeftOf="@+id/augmenter"
         android:text="Lancer"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:background="@drawable/buttonstyle"/>
 
     <Button
         android:id="@+id/augmenter"
@@ -126,7 +131,8 @@
         android:layout_toStartOf="@+id/baisser"
         android:layout_toLeftOf="@+id/baisser"
         android:text="+"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:background="@drawable/buttonstyle"/>
 
     <Button
         android:id="@+id/baisser"
@@ -139,7 +145,8 @@
         android:layout_marginEnd="18dp"
         android:layout_marginRight="18dp"
         android:text="-"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:background="@drawable/buttonstyle" />
 
     <TextView
         android:id="@+id/timer"

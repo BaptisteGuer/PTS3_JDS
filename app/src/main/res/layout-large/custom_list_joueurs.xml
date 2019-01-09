@@ -26,6 +26,7 @@
         android:layout_weight="1"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/delete" />
+        app:srcCompat="@drawable/delete"
+        android:background="@drawable/buttonstyle"/>
 
 </LinearLayout>

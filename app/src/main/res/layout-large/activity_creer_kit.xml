@@ -25,7 +25,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="valider"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:background="@drawable/buttonstyle"/>
 
     <ListView
         android:id="@+id/listItems"
