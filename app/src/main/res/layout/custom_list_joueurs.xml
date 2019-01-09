@@ -9,17 +9,15 @@
     android:gravity="center"
     tools:context=".ParametrageActivity">
 
-    <EditText
-        android:id="@+id/nomJoueur"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
+    <TextView
+        android:id="@+id/nom"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
         android:layout_weight="1"
-        android:ems="10"
         android:gravity="center"
-        android:hint="Nom du joueur"
-        android:inputType="text"
-        android:textColor="@android:color/white" />
+        android:text="Nom"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
 
     <ImageButton
         android:id="@+id/delete"

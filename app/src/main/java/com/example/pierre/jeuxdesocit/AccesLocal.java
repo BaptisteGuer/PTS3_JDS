@@ -181,4 +181,12 @@ public class AccesLocal {
         bd.close();
     }
 
+
+    public void supprimerJoueur(String nom, String nomKit) {
+        bd = accesBD.getWritableDatabase();
+        String req = "DELETE FROM Joueur WHERE nomKit=\"" + nomKit + "\" AND nom=\""+nom+"\";";
+        bd.execSQL(req);
+        bd.close();
+    }
+
 }
