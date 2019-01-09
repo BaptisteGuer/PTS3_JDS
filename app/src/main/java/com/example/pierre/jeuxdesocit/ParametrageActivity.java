@@ -6,22 +6,25 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ParametrageActivity extends AppCompatActivity {
+public class ParametrageActivity extends AppCompatActivity  {
 
     private String nomKit;
     private Button jouerBtn;
     private TextView nomKitTv;
-    private List<Joueur> lesJoueurs;
+    public static List<Joueur> lesJoueurs;
     private ListView joueursView;
     private ListJoueurs adapter;
     private Button ajouterJoueur;
@@ -38,18 +41,25 @@ public class ParametrageActivity extends AppCompatActivity {
         nomKitTv = findViewById(R.id.nomKitTv);
         joueursView = findViewById(R.id.joueursList);
         nomKitTv.setText(nomKit);
-        lesJoueurs = MainActivity.accesLocal.getJoueurs(nomKit);
-        adapter = new ListJoueurs(lesJoueurs, nomKit, this);
+        lesJoueurs = new ArrayList<>();
+        adapter = new ListJoueurs(nomKit, this);
         joueursView.setAdapter(adapter);
 
         jouerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //finishAffinity();
-                Intent intent = new Intent(ParametrageActivity.this, GameActivity.class);
-                intent.putExtra("nomKit", nomKit);
-                startActivity(intent);
-                ParametrageActivity.this.finish();
+                if (lesJoueurs.size() == 0) {
+                    Toast.makeText(ParametrageActivity.this, "Il n'y a pas de joueurs !", Toast.LENGTH_LONG).show();
+                } else {
+                    MainActivity.accesLocal.supprimerJoueur(nomKit);
+                    for (Joueur j : lesJoueurs) {
+                        MainActivity.accesLocal.ajoutJoueur(j, nomKit);
+                    }
+                    Intent intent = new Intent(ParametrageActivity.this, GameActivity.class);
+                    intent.putExtra("nomKit", nomKit);
+                    startActivity(intent);
+                    ParametrageActivity.this.finish();
+                }
             }
         });
 
@@ -61,6 +71,34 @@ public class ParametrageActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_parametres, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_load:
+                load();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void load() {
+        if (MainActivity.accesLocal.getJoueurs(nomKit).size() == 0) {
+            Toast.makeText(ParametrageActivity.this, "Il n'y a pas de joueurs !", Toast.LENGTH_LONG).show();
+        } else {
+            Intent intent = new Intent(ParametrageActivity.this, GameActivity.class);
+            intent.putExtra("nomKit", nomKit);
+            startActivity(intent);
+            ParametrageActivity.this.finish();
+        }
     }
 
     public void ShowPopup(View v) {
@@ -80,12 +118,13 @@ public class ParametrageActivity extends AppCompatActivity {
         btnValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String nom = texte.getText().toString();
-                boucle: {
+                boucle:
+                {
                     if (nom.isEmpty()) {
                         texte.setError("Veuillez entrer un nom correct");
                     } else {
-                        Log.e("size", "" + lesJoueurs.size());
                         Iterator<Joueur> iter = lesJoueurs.iterator();
                         while (iter.hasNext()) {
                             Joueur j = iter.next();
@@ -95,7 +134,6 @@ public class ParametrageActivity extends AppCompatActivity {
                             }
                         }
                         Joueur joueur = new Joueur(nom);
-                        MainActivity.accesLocal.ajoutJoueur(joueur, nomKit);
                         lesJoueurs.add(joueur);
                         popup.dismiss();
                     }

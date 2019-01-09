@@ -11,17 +11,13 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 
-import java.util.List;
-
 public class ListJoueurs extends BaseAdapter implements ListAdapter {
 
-    private List<Joueur> listJoueurs;
     private Context context;
     private Dialog popup;
     private String nomKit;
 
-    public ListJoueurs(List<Joueur> listJoueurs,String nomKit, Context context){
-        this.listJoueurs = listJoueurs;
+    public ListJoueurs(String nomKit, Context context){
         this.context = context;
         this.nomKit = nomKit;
         popup = new Dialog(context);
@@ -30,12 +26,12 @@ public class ListJoueurs extends BaseAdapter implements ListAdapter {
 
     @Override
     public int getCount() {
-    return listJoueurs.size();
+    return ParametrageActivity.lesJoueurs.size();
     }
 
     @Override
     public Joueur getItem(int pos) {
-        return listJoueurs.get(pos);
+        return ParametrageActivity.lesJoueurs.get(pos);
     }
 
     @Override
@@ -59,8 +55,7 @@ public class ListJoueurs extends BaseAdapter implements ListAdapter {
         supprimerKit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                MainActivity.accesLocal.supprimerJoueur(listJoueurs.get(position).getNom(),nomKit);
-                listJoueurs.remove(getItem(position));
+                ParametrageActivity.lesJoueurs.remove(ParametrageActivity.lesJoueurs.get(position));
                 notifyDataSetChanged();
             }
         });

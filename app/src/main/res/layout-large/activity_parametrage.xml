@@ -22,10 +22,10 @@
     <ListView
         android:id="@+id/joueursList"
         android:layout_width="0dp"
-        android:layout_height="506dp"
-        android:layout_alignParentTop="true"
+        android:layout_height="734dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
         android:layout_marginTop="8dp"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/btnJouer"
