@@ -3,11 +3,14 @@ package com.example.pierre.jeuxdesocit;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -95,6 +98,36 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         nomItemTv.setText(lesItems.get(positionItemSelectionne).getNom());
     }
 
+
+    private void save(){
+        Toast.makeText(this,"Sauvegarde",Toast.LENGTH_LONG).show();
+    }
+
+    private void delete(){
+        Toast.makeText(this,"Vous avez quitté la partie",Toast.LENGTH_LONG).show();
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //ajoute les entrées de menu_test à l'ActionBar
+        getMenuInflater().inflate(R.menu.menu_game, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_save:
+                save();
+                return true;
+            case R.id.action_leave:
+                delete();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public void onClick(View v) {
