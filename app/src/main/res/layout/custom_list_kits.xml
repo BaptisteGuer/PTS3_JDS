@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#606060"
     android:baselineAligned="false"
     android:gravity="center"
     tools:context=".MainActivity">
@@ -26,7 +25,8 @@
         android:layout_width="wrap_content"
         android:layout_height="75dp"
         android:layout_weight="1"
-        android:text="Jouer" />
+        android:text="Jouer"
+        android:background="@drawable/buttonstyle"/>
 
     <ImageButton
         android:id="@+id/settings"
@@ -35,7 +35,8 @@
         android:layout_weight="1"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/settings" />
+        app:srcCompat="@drawable/settings"
+        android:background="@drawable/buttonstyle" />
 
     <ImageButton
         android:id="@+id/delete"
@@ -44,6 +45,7 @@
         android:layout_weight="1"
         android:adjustViewBounds="true"
         android:scaleType="fitCenter"
-        app:srcCompat="@drawable/delete" />
+        app:srcCompat="@drawable/delete"
+        android:background="@drawable/buttonstyle"/>
 
 </LinearLayout>

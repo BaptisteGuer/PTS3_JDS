@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#606060"
     tools:context=".ModifierKitActivity">
 
     <TextView
@@ -24,7 +23,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:text="valider"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:background="@drawable/buttonstyle"/>
 
     <ListView
         android:id="@+id/listItems"

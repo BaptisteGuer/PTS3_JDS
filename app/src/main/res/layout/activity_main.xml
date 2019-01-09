@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#606060"
     tools:context=".MainActivity">
 
     <TextView
@@ -38,7 +37,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="17dp"
         android:layout_marginBottom="0dp"
-        android:text="Button" />
+        android:text="Button"
+        android:background="@drawable/buttonstyle"/>
 
     <ListView
         android:id="@+id/kitsList"
