@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         lesItems = new ArrayList<>();
         lesItems.add(new De());
         lesItems.add(new Piece());
+        lesItems.add(new Carte());
         accesLocal.ajoutListItem(lesItems, "");
 
         create_kit.setText("Créer Kit");
