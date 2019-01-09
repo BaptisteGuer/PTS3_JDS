@@ -6,12 +6,14 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class ParametrageActivity extends AppCompatActivity {
@@ -40,16 +42,17 @@ public class ParametrageActivity extends AppCompatActivity {
         adapter = new ListJoueurs(lesJoueurs, nomKit, this);
         joueursView.setAdapter(adapter);
 
-        jouerBtn.setOnClickListener(new View.OnClickListener(){
+        jouerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //finishAffinity();
                 Intent intent = new Intent(ParametrageActivity.this, GameActivity.class);
                 intent.putExtra("nomKit", nomKit);
                 startActivity(intent);
             }
         });
 
-        ajouterJoueur.setOnClickListener(new View.OnClickListener(){
+        ajouterJoueur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 popup = new Dialog(ParametrageActivity.this);
@@ -59,7 +62,7 @@ public class ParametrageActivity extends AppCompatActivity {
 
     }
 
-    public void ShowPopup (View v){
+    public void ShowPopup(View v) {
         TextView txtclose;
         Button btnValider;
         final EditText texte;
@@ -77,23 +80,29 @@ public class ParametrageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String nom = texte.getText().toString();
-                if (nom.isEmpty()){
-                    texte.setError("Veuillez entrer un nom correct");
-                }else{
-                for(int i=0; i<lesJoueurs.size(); i++){
-                    if(lesJoueurs.get(i).getNom() == nom){
-                        texte.setError("Nom déjà utilisé !");
-                    }
-                    else{
+                boucle: {
+                    if (nom.isEmpty()) {
+                        texte.setError("Veuillez entrer un nom correct");
+                    } else {
+                        Log.e("size", "" + lesJoueurs.size());
+                        Iterator<Joueur> iter = lesJoueurs.iterator();
+                        while (iter.hasNext()) {
+                            Joueur j = iter.next();
+                            if (j.getNom().equals(nom)) {
+                                texte.setError("Nom déjà utilisé !");
+                                break boucle;
+                            }
+                        }
                         Joueur joueur = new Joueur(nom);
-                        MainActivity.accesLocal.ajoutJoueur(joueur,nomKit);
+                        MainActivity.accesLocal.ajoutJoueur(joueur, nomKit);
                         lesJoueurs.add(joueur);
                         popup.dismiss();
                     }
-                }}
-
+                }
             }
+
         });
+
         popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         popup.show();
     }

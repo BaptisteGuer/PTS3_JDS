@@ -36,8 +36,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Nom"
         android:inputType="textPersonName"
-        android:text="Nom" />
+        android:textColor="@android:color/white" />
 
     <Button
         android:id="@+id/valider"

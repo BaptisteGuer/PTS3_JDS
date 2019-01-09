@@ -1,5 +1,6 @@
 package com.example.pierre.jeuxdesocit;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -103,15 +104,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void save(){
+        MainActivity.accesLocal.supprimerJoueur(nomKit);
         MainActivity.accesLocal.ajoutListJoueur(lesJoueurs,nomKit);
-
-        Toast.makeText(this,"Sauvegarde",Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(GameActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
     private void delete(){
-        //Toast.makeText(this,"Vous avez quitté la partie",Toast.LENGTH_LONG).show();
         MainActivity.accesLocal.supprimerJoueur(nomKit);
-        this.finish();
+        Intent intent = new Intent(GameActivity.this, MainActivity.class);
+        startActivity(intent);
 
     }
 
