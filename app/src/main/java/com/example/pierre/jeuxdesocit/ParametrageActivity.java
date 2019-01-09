@@ -12,7 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -38,6 +40,7 @@ public class ParametrageActivity extends AppCompatActivity {
         nomKitTv = findViewById(R.id.nomKitTv);
         joueursView = findViewById(R.id.joueursList);
         nomKitTv.setText(nomKit);
+        lesJoueurs = new ArrayList<>();
         lesJoueurs = MainActivity.accesLocal.getJoueurs(nomKit);
         adapter = new ListJoueurs(lesJoueurs, nomKit, this);
         joueursView.setAdapter(adapter);
@@ -45,11 +48,14 @@ public class ParametrageActivity extends AppCompatActivity {
         jouerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //finishAffinity();
-                Intent intent = new Intent(ParametrageActivity.this, GameActivity.class);
-                intent.putExtra("nomKit", nomKit);
-                startActivity(intent);
-                ParametrageActivity.this.finish();
+                if (MainActivity.accesLocal.getJoueurs(nomKit).size() == 0) {
+                    Toast.makeText(ParametrageActivity.this, "Il n'y a pas de joueurs !", Toast.LENGTH_LONG).show();
+                } else {
+                    Intent intent = new Intent(ParametrageActivity.this, GameActivity.class);
+                    intent.putExtra("nomKit", nomKit);
+                    startActivity(intent);
+                    ParametrageActivity.this.finish();
+                }
             }
         });
 
@@ -80,8 +86,10 @@ public class ParametrageActivity extends AppCompatActivity {
         btnValider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String nom = texte.getText().toString();
-                boucle: {
+                boucle:
+                {
                     if (nom.isEmpty()) {
                         texte.setError("Veuillez entrer un nom correct");
                     } else {

@@ -71,10 +71,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         joueurGauche.setOnClickListener(this);
 
         lesJoueurs = new ArrayList<>();
-        lesJoueurs.add(new Joueur("Joueur1"));
-        lesJoueurs.add(new Joueur("Joueur2"));
-        lesJoueurs.add(new Joueur("Joueur3"));
-        lesJoueurs.add(new Joueur("Joueur4"));
+        for (Joueur j : MainActivity.accesLocal.getJoueurs(nomKit)) {
+            lesJoueurs.add(j);
+        }
+
         positionJoueurSelectionne = 0;
         nbJoueurs = lesJoueurs.size();
         nomJoueurTv.setText(lesJoueurs.get(positionJoueurSelectionne).getNom());
