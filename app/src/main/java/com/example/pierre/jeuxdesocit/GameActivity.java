@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +29,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton joueurGauche;
     private Button lancer;
     private EditText entrerScore;
+    private ImageView imageItem;
     private TextView nomJoueurTv;
     private TextView nomItemTv;
     private TextView score;
@@ -57,6 +59,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         nomItemTv = findViewById(R.id.itemChoisi);
         lancer = findViewById(R.id.lancer);
         resTv = findViewById(R.id.resTv);
+        imageItem = findViewById(R.id.item);
 
         augmenter.setOnClickListener(this);
         baisser.setOnClickListener(this);
@@ -94,8 +97,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         }
         positionItemSelectionne = 0;
         nbItems = lesItems.size();
-        Log.e("azerty",""+nbItems);
         nomItemTv.setText(lesItems.get(positionItemSelectionne).getNom());
+        imageItem.setImageResource(lesItems.get(positionItemSelectionne).getImage());
     }
 
 
@@ -181,6 +184,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     positionItemSelectionne++;
                 }
                 nomItemTv.setText(lesItems.get(positionItemSelectionne).getNom());
+                imageItem.setImageResource(lesItems.get(positionItemSelectionne).getImage());
             }
             if(v.getId()==R.id.itemGauche){
                 if(positionItemSelectionne == 0){
@@ -189,6 +193,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     positionItemSelectionne--;
                 }
                 nomItemTv.setText(lesItems.get(positionItemSelectionne).getNom());
+                imageItem.setImageResource(lesItems.get(positionItemSelectionne).getImage());
             }
         }
     }
