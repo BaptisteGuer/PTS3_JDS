@@ -17,6 +17,7 @@ import android.widget.Toast;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TimerTask;
 
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
@@ -161,7 +162,21 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     }
             }
             if (v.getId()==R.id.lancer){
-                resTv.setText(lesItems.get(positionItemSelectionne).faireAction());
+
+                if (lesItems.get(positionItemSelectionne) instanceof Timer){
+
+                    java.util.Timer timerV2 = new java.util.Timer();
+                    timerV2.schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            resTv.setText(lesItems.get(positionItemSelectionne).faireAction());
+                        }
+                    }, 0, 1000);
+                }else {
+                    resTv.setText(lesItems.get(positionItemSelectionne).faireAction());
+                }
+
+
             }
             if (v.getId()==R.id.joueurDroite){
                 if(positionJoueurSelectionne == nbJoueurs-1){
