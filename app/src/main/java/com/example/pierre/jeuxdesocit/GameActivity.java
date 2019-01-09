@@ -100,11 +100,16 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
 
     private void save(){
+        MainActivity.accesLocal.ajoutListJoueur(lesJoueurs,nomKit);
+
         Toast.makeText(this,"Sauvegarde",Toast.LENGTH_LONG).show();
     }
 
     private void delete(){
-        Toast.makeText(this,"Vous avez quitté la partie",Toast.LENGTH_LONG).show();
+        //Toast.makeText(this,"Vous avez quitté la partie",Toast.LENGTH_LONG).show();
+        MainActivity.accesLocal.supprimerJoueur(nomKit);
+        this.finish();
+
     }
 
 

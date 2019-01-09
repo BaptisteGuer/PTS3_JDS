@@ -134,7 +134,7 @@ public class AccesLocal {
         bd = accesBD.getWritableDatabase();
         String req = "INSERT INTO Joueur (nom, point, couleur, nomKit) VALUES ";
 
-        req += "(\"" + joueur.getNom() + "\",\"" + joueur.getScore() + "\",\"" + joueur.getCouleur() + "\", \"" + nomKit + "\")";
+        req += "(\"" + joueur.getNom() + "\"," + joueur.getScore() + ",\"" + joueur.getCouleur() + "\", \"" + nomKit + "\")";
         bd.execSQL(req);
         bd.close();
     }
@@ -163,6 +163,20 @@ public class AccesLocal {
     public void supprimerJoueur(String nomKit) {
         bd = accesBD.getWritableDatabase();
         String req = "DELETE FROM Joueur WHERE nomKit=\"" + nomKit + "\";";
+        bd.execSQL(req);
+        bd.close();
+    }
+
+    public void ajoutListJoueur(List<Joueur> joueurs, String nomKit) {
+        bd = accesBD.getWritableDatabase();
+        String req = "INSERT INTO Joueur (nom, point, couleur, nomkit) VALUES ";
+        for (Joueur joueur : joueurs) {
+            req += "(\"" + joueur.getNom() + "\"," + joueur.getScore() + ",\"" + joueur.getCouleur() + "\", \"" + nomKit + "\")";
+            if (!joueurs.get(joueurs.size() - 1).equals(joueur)) {
+                req += ",";
+            }
+        }
+        req += ";";
         bd.execSQL(req);
         bd.close();
     }
