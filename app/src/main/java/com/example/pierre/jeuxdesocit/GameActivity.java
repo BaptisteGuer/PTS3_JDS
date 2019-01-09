@@ -108,12 +108,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         MainActivity.accesLocal.ajoutListJoueur(lesJoueurs,nomKit);
         Intent intent = new Intent(GameActivity.this, MainActivity.class);
         startActivity(intent);
+        this.finish();
     }
 
     private void delete(){
         MainActivity.accesLocal.supprimerJoueur(nomKit);
         Intent intent = new Intent(GameActivity.this, MainActivity.class);
         startActivity(intent);
+        this.finish();
 
     }
 

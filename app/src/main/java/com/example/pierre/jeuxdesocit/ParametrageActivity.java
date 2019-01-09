@@ -49,6 +49,7 @@ public class ParametrageActivity extends AppCompatActivity {
                 Intent intent = new Intent(ParametrageActivity.this, GameActivity.class);
                 intent.putExtra("nomKit", nomKit);
                 startActivity(intent);
+                ParametrageActivity.this.finish();
             }
         });
 
