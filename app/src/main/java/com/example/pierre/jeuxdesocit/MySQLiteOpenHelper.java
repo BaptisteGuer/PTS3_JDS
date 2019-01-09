@@ -8,10 +8,18 @@ import android.util.Log;
 public class MySQLiteOpenHelper extends SQLiteOpenHelper {
 
     private String creation = "create table Item("
-            +"id INTEGER PRIMARY KEY AUTOINCREMENT,"
-            +"nom TEXT NOT NULL,"
-            +"valeur TEXT NOT NULL,"
-            +"nomKit TEXT NOT NULL);";
+            + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + "nom TEXT NOT NULL,"
+            + "valeur TEXT NOT NULL,"
+            + "nomKit TEXT NOT NULL);";
+
+    private String joueur = "create table Joueur("
+            + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + "nom TEXT NOT NULL,"
+            + "point INTEGER NOT NULL,"
+            + "couleur TEXT,"
+            + "nomKit TEXT NOT NULL);";
+
 
     public MySQLiteOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
@@ -21,7 +29,7 @@ public class MySQLiteOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(creation);
-
+        db.execSQL(joueur);
     }
 
     @Override

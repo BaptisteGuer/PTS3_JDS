@@ -6,10 +6,21 @@ public class Joueur {
     private int score;
     private String couleur;
 
-    public Joueur(String nom){
-        this.nom=nom;
+    public Joueur(String nom) {
+        this.nom = nom;
         this.score = 0;
-        this.couleur=null;
+        this.couleur = null;
+    }
+
+    public Joueur(String nom, int score) {
+        this.nom = nom;
+        this.score = score;
+    }
+
+    public Joueur(String nom, int score, String couleur) {
+        this.nom = nom;
+        this.score = score;
+        this.couleur = couleur;
     }
 
     public int getScore() {
@@ -30,5 +41,9 @@ public class Joueur {
 
     public void setCouleur(String couleur) { //Pour équipes
         this.couleur = couleur;
+    }
+
+    public String getCouleur() {
+        return couleur;
     }
 }
