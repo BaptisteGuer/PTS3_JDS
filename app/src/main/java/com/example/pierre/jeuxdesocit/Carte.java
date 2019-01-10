@@ -35,9 +35,24 @@ public class Carte implements Item {
 
     @Override
     public String faireAction() {
-        valeur = "";
         int val = (int) (Math.random() * ((13 - 1) + 1)) + 1;
-        valeur += String.valueOf(val);
+        switch (val) {
+            case 1:
+                valeur = "As";
+                break;
+            case 11:
+                valeur = "Valet";
+                break;
+            case 12:
+                valeur = "Dame";
+                break;
+            case 13:
+                valeur = "Roi";
+                break;
+            default:
+                valeur = String.valueOf(val);
+                break;
+        }
         val = (int) (Math.random() * ((4 - 1) + 1)) + 1;
         switch (val) {
             case 1:
