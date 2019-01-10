@@ -35,11 +35,9 @@ public class ModifierKitActivity extends AppCompatActivity {
 
         validerKit.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                List<String> test = MainActivity.accesLocal.getListItems(nomKit);
-                for (String item : test) {
-                }
                 Intent intent = new Intent(ModifierKitActivity.this, MainActivity.class);
                 startActivity(intent);
+                ModifierKitActivity.this.finish();
             }
         });
     }

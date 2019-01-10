@@ -105,6 +105,7 @@ public class CreerKitActivity extends AppCompatActivity {
                     }
                     Intent intent = new Intent(CreerKitActivity.this, MainActivity.class);
                     startActivity(intent);
+                    CreerKitActivity.this.finish();
                 }
             }
         });

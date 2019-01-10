@@ -71,7 +71,6 @@ public class ListKits extends BaseAdapter implements ListAdapter {
                 Intent intent = new Intent(context, ParametrageActivity.class);
                 intent.putExtra("nomKit", getItem(position));
                 context.startActivity(intent);
-
             }
         });
 
